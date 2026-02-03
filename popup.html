@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Compare Tool</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 So Sánh Văn Bản</h1>
+    
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="compare">So Sánh</button>
+      <button class="tab-btn" data-tab="manage">Quản Lý Mẫu</button>
+    </div>
+
+    <!-- Tab So Sánh -->
+    <div class="tab-content active" id="compare">
+      <div class="section">
+        <label for="inputText">Nhập câu hỏi của bạn:</label>
+        <textarea id="inputText" placeholder="Nhập câu hỏi cần tìm đáp án..."></textarea>
+      </div>
+
+      <button id="compareBtn" class="btn-primary">Tìm Đáp Án</button>
+
+      <div id="results" class="results hidden">
+        <h3>Đáp án phù hợp nhất:</h3>
+        <div id="resultsList"></div>
+      </div>
+    </div>
+
+    <!-- Tab Quản Lý Mẫu -->
+    <div class="tab-content" id="manage">
+      <div class="section">
+        <h3>Thêm Câu Hỏi & Đáp Án Mới</h3>
+        <label for="sampleQuestion">Câu hỏi:</label>
+        <textarea id="sampleQuestion" placeholder="Nhập câu hỏi (VD: What is AI prompt?)"></textarea>
+        <label for="sampleAnswer">Đáp án:</label>
+        <textarea id="sampleAnswer" placeholder="Nhập đáp án cho câu hỏi này..."></textarea>
+        <button id="addSampleBtn" class="btn-primary">Thêm Câu Hỏi</button>
+      </div>
+
+      <div class="section">
+        <h3>Danh Sách Câu Hỏi Đã Lưu (<span id="sampleCount">0</span>)</h3>
+        <div id="samplesList"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="default-samples.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

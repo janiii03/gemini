@@ -1,0 +1,2 @@
+- Dùng để tìm kiếm đáp án nhanh được cài đặt sẳn, các câu hỏi hiện tại là đáp án của đề thi "Gemini Certification for University Students"
+- Có thể cài đặt câu hỏi ở file **default-samples.js**
