@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://edu.exceedlms.com/assessment_responses/take?enrollment_id=459568992&survey=false -->
+<html class="" lang="en" dir="ltr" data-timezone="Asia/Bangkok"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+
+<script>
+  window.Intellum = {
+    ...window.Intellum,
+    accountName: 'Google for Education',
+    accountFullDomain: 'https://edu.exceedlms.com/',
+    datepickerI18n: {
+      previousMonth: "Previous Month",
+      nextMonth: "Next Month",
+      weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      weekdaysShort: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+      months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+    },
+    i18nStrings: {
+      add_text_here: "Add text here",
+      in_days: "in {{COUNT}} days",
+      in_hours: "in {{COUNT}} hours",
+      in_minutes: "in {{COUNT}} minutes",
+      in_one_hour: "in 1 hour",
+      in_one_minute: "in 1 minute",
+      item_dropped: "\"{{ITEM NAME}}\" dropped at position {{POSITION}} of {{TOTAL ITEMS}}.",
+      item_grabbed: "\"{{ITEM NAME}}\" grabbed. Current position: {{POSITION}} of {{TOTAL ITEMS}}. Use up and down keys to move the item, space bar to drop it, Escape to cancel.",
+      item_move_canceled: "Move of \"{{ITEM NAME}}\" canceled.",
+      item_moved_to_position: "\"{{ITEM NAME}}\" moved to position {{POSITION}} of {{TOTAL ITEMS}}.",
+      item_moved_to_position_in_list: "\"{{ITEM NAME}}\" moved to position {{POSITION}} of {{TOTAL ITEMS}} in \"{{LIST NAME}}.\"",
+      live_now: "LIVE NOW",
+      loading: "Loading...",
+      processing_ellipsis: "Processing...",
+      remove: "Remove",
+      removing_ellipsis: "Removing...",
+      saving_ellipsis: "Saving...",
+      search_results: "Search Results",
+      showing_item_position_of_total: "Showing item {{POSITION}} of {{TOTAL ITEMS}}",
+      start_creating_content: "Start creating content",
+      there_was_a_problem_getting_your_updates: "There was a problem in getting your updates.",
+      tomorrow: "tomorrow",
+      topicsSuggestionEmpty: "Sorry. We've run out of suggested topics.",
+      topicsSelectionEmpty: "No topics have been assigned to this activity.",
+      topicsFollowedSelectionEmpty: "No topics have been followed yet.",
+      upload_canceled: "The upload was canceled.",
+      uploadfile_no_file_selected: "No file selected",
+      uploadfile_uploading_msg: "Uploading {{FILENAME}}",
+      uploadfile_error_format_msg: "{{FILENAME}} is not the correct file type. Please try again.",
+      uploadfile_error_size_coursefile_msg: "{{FILENAME}} is too large. Size limit: 10MB for images, 3GB for videos and audio.",
+      uploadfile_error_size_msg: "{{FILENAME}} is too big. Please try again.",
+      uploadfile_error_msg: "There was a problem uploading {{FILENAME}}. Please try again.",
+      uploading_ellipsis: "Uploading...",
+      use_menu_edit_html: "Use menu to edit HTML",
+      when_datepicket_widget_appears: "When the datepicker widget appears, use arrow keys to navigate dates and select a date.",
+    },
+    mediumEditorI18n: {
+      bold: "Bold",
+      italic: "Italic",
+      link: "Link",
+      title: "Title",
+      subtitle: "Subtitle",
+      unorderedList: "Unordered List",
+      orderedList: "Ordered List",
+      quote: "Quote",
+      linkPlaceholderText: "Paste or type a link...",
+      save: "Save",
+      close: "Close",
+    },
+    properties: {
+      courseContentFileSizeConstraintsInMB: {
+        image: 10485760,
+        video: 3221225472,
+        audio: 3221225472,
+      },
+    },
+    translation_paths: {
+        'ar': '/locales/ar.08399b9d7899be40da9bf665b1d4c5f5.json',
+        'bg': '/locales/bg.0d9f60e4bfa932a4a21680e36605a995.json',
+        'bn': '/locales/bn.d32aaa334d8879b2574324d6254057f2.json',
+        'cs': '/locales/cs.55d3181d93b9b758595c926ec3407f22.json',
+        'da': '/locales/da.d10733097174e97030c9aab3616a4dc8.json',
+        'de': '/locales/de.5ea8aee30168805446fbf60cd30fdf3d.json',
+        'el': '/locales/el.f3237da14e3204148bd98a14c7b6a0cd.json',
+        'en-AU': '/locales/en-AU.55a9a577dfb257bba9840bde29d05a2c.json',
+        'en-CA': '/locales/en-CA.53dfe1f1da02696030ff23ca12e274e3.json',
+        'en-GB': '/locales/en-GB.ee696d0cca9c66508f377ec718095f1a.json',
+        'en-IN': '/locales/en-IN.dd37b029bcd89f43e552749195926854.json',
+        'en-SG': '/locales/en-SG.c84f6ec942903d709fa924969778da10.json',
+        'en': '/locales/en.a39b36b81213a7f702f770fd0f79edd6.json',
+        'es-419': '/locales/es-419.710c8b228ccb7fd313f669561861d3d8.json',
+        'es-MX': '/locales/es-MX.2fe22e969c3bed06486d06520b4f3aff.json',
+        'es': '/locales/es.b9d161558fdd21908edbe2b7d6e97225.json',
+        'et': '/locales/et.e7ea909bc0f3984d64fac9ead14b9679.json',
+        'fi': '/locales/fi.8d437d25c29c2031aaa00efc02fb1750.json',
+        'fr-CA': '/locales/fr-CA.a33ad97a45ca1db17af13f17ff02c3b6.json',
+        'fr': '/locales/fr.9d376d9972f2cb7bba7160ec8e22f665.json',
+        'he': '/locales/he.5dd430a1030dff29391b48e4f6f0349d.json',
+        'hi': '/locales/hi.8583b2fa6e7e9707b694e07805b65cd1.json',
+        'hr': '/locales/hr.d8315395a9d6479bc4b2821f23237846.json',
+        'hu': '/locales/hu.dd89e5e47ac3a77a763aede4d7122478.json',
+        'id': '/locales/id.22237dfce26bf7544a4f4ce9f9f406cb.json',
+        'it': '/locales/it.e88fe74c51e6f9922f9f99db2b9b1b5c.json',
+        'ja': '/locales/ja.439c6c9f197f8aa82951d993493fcffc.json',
+        'kn': '/locales/kn.ff08cc13bc7c9d84dfe2ceb17ef1cfac.json',
+        'ko': '/locales/ko.b8b12e385198d34b6b705327f7f53f81.json',
+        'lt': '/locales/lt.3893c7048885746cfcc5e26a11ef7124.json',
+        'lv': '/locales/lv.5a6e761593b549df4eb10da2fcdd4c7b.json',
+        'mn': '/locales/mn.9d26943b334e3bad20e39a04beed206c.json',
+        'mr': '/locales/mr.5e95bd01b2797ddd81518723b85c9dcb.json',
+        'ms': '/locales/ms.1754a51f80302099938935986aba899e.json',
+        'my': '/locales/my.c9a9aa7f1f9042fdc984b8c27121c7c0.json',
+        'nb': '/locales/nb.e1b255f112c0cabf25ca118370a10268.json',
+        'nl': '/locales/nl.e60d4548d16e962376fd1bdd68c67579.json',
+        'pl': '/locales/pl.ce32671e038edecdb1f041d53d258705.json',
+        'pt-BR': '/locales/pt-BR.c7a1d7852bc180a33f6e3a280c9f47ed.json',
+        'pt-PT': '/locales/pt-PT.7fa1fc6825fa16dc0e1122de4c008106.json',
+        'ro': '/locales/ro.4e957aa85aea78f32fb89db6b5dc878a.json',
+        'ru': '/locales/ru.cf657cd168c85a234e7fcfbcb5aeba18.json',
+        'si': '/locales/si.ea9273d3a5f9203b123aa9d97f2d6ac5.json',
+        'sk': '/locales/sk.4d8fe5bbf14c10c04ac55f239d34ff3e.json',
+        'sl': '/locales/sl.a98eb6726902ef2843227b8231ed3e41.json',
+        'sr-Cyrl': '/locales/sr-Cyrl.90989ec8ea8889103e7a1db39606206b.json',
+        'sr-Latn': '/locales/sr-Latn.3199a1cd9ed8e7b3f91e434fb40d9f66.json',
+        'sv': '/locales/sv.fef5d0735a7a1f3ab42067d38b392468.json',
+        'ta': '/locales/ta.bb4768e45868b5bd6f28117af2eb4aff.json',
+        'te': '/locales/te.622a2d3c4c4a394d6827469ac319af68.json',
+        'th': '/locales/th.863c5c6c4aac992c307d7c050bd6a836.json',
+        'tr': '/locales/tr.b9f7f85bcf29458e582ca1f8f53e8a17.json',
+        'uk': '/locales/uk.bfb325de0691c410493dc0e269346838.json',
+        'vi': '/locales/vi.f5e44629bc2f85c9f439e3057bfc0945.json',
+        'zh-CN': '/locales/zh-CN.b6370930b1a7525744d29db5af17ab09.json',
+        'zh-TW': '/locales/zh-TW.90bad463c8c7c3432f63a071f1846e9b.json',
+    },
+  };
+</script>
+
+
+    <style data-tippy-stylesheet="">.tippy-box[data-animation=fade][data-state=hidden]{opacity:0}[data-tippy-root]{max-width:calc(100vw - 10px)}.tippy-box{position:relative;background-color:#333;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;white-space:normal;outline:0;transition-property:transform,visibility,opacity}.tippy-box[data-placement^=top]>.tippy-arrow{bottom:0}.tippy-box[data-placement^=top]>.tippy-arrow:before{bottom:-7px;left:0;border-width:8px 8px 0;border-top-color:initial;transform-origin:center top}.tippy-box[data-placement^=bottom]>.tippy-arrow{top:0}.tippy-box[data-placement^=bottom]>.tippy-arrow:before{top:-7px;left:0;border-width:0 8px 8px;border-bottom-color:initial;transform-origin:center bottom}.tippy-box[data-placement^=left]>.tippy-arrow{right:0}.tippy-box[data-placement^=left]>.tippy-arrow:before{border-width:8px 0 8px 8px;border-left-color:initial;right:-7px;transform-origin:center left}.tippy-box[data-placement^=right]>.tippy-arrow{left:0}.tippy-box[data-placement^=right]>.tippy-arrow:before{left:-7px;border-width:8px 8px 8px 0;border-right-color:initial;transform-origin:center right}.tippy-box[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{width:16px;height:16px;color:#333}.tippy-arrow:before{content:"";position:absolute;border-color:transparent;border-style:solid}.tippy-content{position:relative;padding:5px 9px;z-index:1}</style><link rel="preconnect" href="https://storage.googleapis.com/" crossorigin="">
+
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/349/small/logo-googleg-gradient-color-1x-web-24dp-1.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=0yZp2g%2B5GhOpSIr%2FYQiXVtJYrCM%3D&amp;Expires=1776808073" sizes="16x16">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/349/medium/logo-googleg-gradient-color-1x-web-24dp-1.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=6Jidocjc22kzKIE42klYC8fCTj8%3D&amp;Expires=1776808073" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/349/large/logo-googleg-gradient-color-1x-web-24dp-1.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=E6YvY7HYzMmf3sXDLjbP%2B9a8XLQ%3D&amp;Expires=1776808073" sizes="96x96">
+
+  
+  
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+
+    <meta name="apple-itunes-app" content="app-id=1087150865, app-argument=https://edu.exceedlms.com/assessment_responses/take">
+    <link rel="manifest" href="https://edu.exceedlms.com/manifest.json">
+
+
+
+
+    <title>Gemini Certification for Educators</title>
+
+
+
+
+    <meta content="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/open_graph_images/349/full/525x295-cims-logo-google-for-education-lockup-vertical-rgb-01-1.png" property="og:image">
+
+    <meta name="centrifugo-public-url" content="wss://websockets-v5.intellum.com"><meta name="centrifugo-connection-token" content="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGNlZWQtZ29vZ2xlX2V4dGVybmFsLXByb2R1Y3Rpb24tMzEyOTA0MDMifQ.865O3bdjf2Hfolby3QBOHnyHq6vXVoYrgV-rbGftwRY">
+
+  <link rel="stylesheet" href="./Gemini Certification for Educators mutil_files/font_faces-1741047541176779.css" media="all">
+
+  <link rel="stylesheet" href="./Gemini Certification for Educators mutil_files/all-0d2022504113150d0381adad42441a2307b4c58b52a7ad052cff098bf17f5ea0.css" media="all">
+  <link rel="stylesheet" href="./Gemini Certification for Educators mutil_files/styles.css" media="all">
+  
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="xfuHuxtNy2uLvFsra3rMfSh35qrt8cXOKcZgq8DhLB06Fhdp9ZyV0CpAQQZgzO8mZ+BaG2xEx6gFisyYT9KXWQ==">
+
+  
+
+  
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(
+      {'user_id': 31290403}
+    );
+    window.dataLayer.push({'cluster': "google_external"});
+    window.dataLayer.push({'environment': "production"})
+</script>
+
+  <script>
+    window.IntellumDataLayer = window.IntellumDataLayer || {"account":{"id":1066,"name":"Google for Education"},"organization":{"id":349,"code":null,"name":"Default"},"user":{"id":31290403,"code":"112042526388010798872","uid":"112042526388010798872","locale":"en","authority":"student","tzid":"Hanoi","last_login_at":"2026-04-21T09:11:40-04:00","custom_a":"1","custom_b":"TVU","custom_c":"","custom_d":"School / Organizational Email Address","custom_e":"","custom_f":"Personal Email Address","custom_g":"Yes (Note: You may skip the next question and click Register)","custom_h":"","custom_i":"redacted","custom_j":"redacted","custom_k":"redacted","custom_l":"redacted","custom_m":"redacted","custom_n":"redacted","custom_o":"redacted","custom_p":"redacted","custom_q":"redacted","custom_r":"redacted","custom_s":"redacted","custom_t":"redacted","custom_u":"redacted"},"course":null,"course_session":null,"enrollment":{"id":459568992,"code":"i-459568992","started_on":"2026-04-21T20:12:40+07:00","enrolled_on":"2026-04-21T20:11:24+07:00","due_on":null,"expires_on":null,"completed_on":null,"last_opened_on":"2026-04-21T20:12:36+07:00","status":"in-progress","relationship_type":"required"},"page_type":null,"search":null};
+</script>
+
+  
+
+
+
+  <!-- Intellum GA4 script -->
+  <script type="text/javascript" async="" src="./Gemini Certification for Educators mutil_files/js"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9QZZZPK0JH');
+  </script>
+
+  <script type="text/javascript">
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+          ga('create', 'UA-45326746-3', 'auto', {
+              'name': 'intellumTracker',
+              'userId': 'google_external-31290403'});
+    ga('intellumTracker.set', 'anonymizeIp', true);
+    ga('intellumTracker.send', 'pageview');
+  </script>
+  <script type="text/javascript" async="" src="./Gemini Certification for Educators mutil_files/analytics.js.download"></script>
+
+
+
+
+  
+
+  
+
+
+
+
+  
+<style type="text/css">.react-md-textarea{box-sizing:border-box;max-width:100%;resize:none;margin:0;padding:1em;width:100%;height:25em;border:1px solid #ddd;border-top:none;border-radius:2px}.react-md-textarea-drag{border:2px dashed #8ed091;background:#f0f8ff}.react-md-toolbar{font-size:9pt;height:29px;margin-bottom:0;border-bottom:1px solid #ddd}div.react-md-tab{background:#fff}div.react-md-tab button{margin:2px;margin-top:0;margin-bottom:0;border-top-left-radius:2px;border-top-right-radius:2px;border:none;border-bottom:1px solid #ddd;background:inherit;float:left;outline:none;cursor:pointer;height:30px;min-width:5em}div.react-md-tab button:first-child{margin-left:0}div.react-md-tab button.active{border:1px solid #ddd;border-bottom:none}.react-md-toolbar-item{line-height:30px}.react-md-toolbar-button{width:25px;border:none;background:inherit;cursor:pointer;padding:4px;margin-left:7px;border-radius:2px;margin-top:2px}.react-md-toolbar-button:hover{box-shadow:0 1px 10px #ddd}.react-md-preview-area{border:1px solid #ddd;border-top:none;min-height:15em;padding:1em;position:relative}.react-md-preview-area img{max-width:100%}.react-md-dropzone-wrap .react-md-remove-btn{cursor:pointer;color:#2196f3}.react-md-dropzone-wrap .react-md-dropzone-info{background:#f7f7f7;color:#92a1ad;font-size:12px;margin-top:-4px;padding:.5rem;border-bottom:1px solid #ddd;border-left:1px solid #ddd;border-right:1px solid #ddd}.react-md-info-text{display:flex;flex-direction:row}.react-md-file-guide{order:0;flex-basis:100%}.react-md-markdown-guide{order:1;margin-left:10px;flex-basis:auto;flex-shrink:0}.react-md-icon{display:inline-block;width:1.3em;height:1.3em;stroke-width:0;stroke:#545454;fill:#545454}.react-md-toolbar-dropdown-button{padding:4px 0;width:28px}.react-md-toolbar-caret{display:inline-block;width:0;height:0;vertical-align:middle;content:"";border:4px solid;border-right-color:transparent;border-bottom-color:transparent;border-left-color:transparent}.react-md-dropdown{display:none;position:absolute;top:100%;left:0;z-index:100;padding:10px 16px;margin-top:2px;list-style:none;background-color:#fff;background-clip:padding-box;border:1px solid rgba(27,31,35,.15);border-radius:4px;box-shadow:0 3px 12px rgba(27,31,35,.15)}.react-md-dropdown ul{margin:0;padding:0;list-style-type:none}.react-md-dropdown-option{cursor:pointer}.react-md-dropdown-option:hover{color:#020298}.react-md-header-1{font-weight:700;font-size:22px}.react-md-header-2{font-weight:700;font-size:18px}.react-md-header-3{font-weight:700;font-size:15px}.react-md-error{color:red;font-weight:700}.react-md-loader,.react-md-loader:after{border-radius:50%;width:3em;height:3em}.react-md-loader{margin:30px auto;font-size:10px;position:relative;text-indent:-9999em;border-top:.8em solid rgba(0,17,22,.2);border-right:.8em solid rgba(0,17,22,.2);border-bottom:.8em solid rgba(0,17,22,.2);border-left:.8em solid #001116;-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation:load8 1.1s infinite linear;animation:load8 1.1s infinite linear}@-webkit-keyframes load8{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes load8{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}.react-md-progress{display:inline-block;width:150px;height:7px;background-color:#ddd;margin:0 4px 0 6px}.react-md-progress-value{display:block;height:100%;background-color:#666}</style></head>
+
+<body class="body--logged-in student_assessment a11y-nofocus" data-controller="assessment_responses" data-action="take" data-custom-ui="google">
+
+  
+
+  
+
+
+  <a href="https://edu.exceedlms.com/assessment_responses/take?enrollment_id=459568992&amp;survey=false#main" class="skip2content">
+    Skip to main content
+  </a>
+
+
+  
+
+  <main class="main main--student" id="main">
+
+      
+  
+<header id="coursebar" class="coursebar" data-handle-top-pos="true">
+  <div class="coursebar__container">
+    <div class="coursebar__content">
+      <a class="coursebar__close hint hint--bottom-right" id="course_close" data-hint="Close" data-hint-is-label="true" href="https://edu.exceedlms.com/student/activity/1804358-gemini-certification-for-educators" aria-labelledby="hint-id-916">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+</a><span class="hint--a11y" role="tooltip" id="hint-id-916">Close</span>        <h1 class="u-headingpage--coursebar">Gemini Certification for Educators</h1>
+    </div>
+
+
+        <div class="coursebar__actions">
+          <div class="coursebar__stats" data-neeman-class="progress">
+            <div class="coursebar__progress">
+                Progress: 8 of 37
+            </div>
+              
+<div class="coursebar__timelimit">
+  <span class="coursebar__label">Time Limit: </span>
+  <span id="time-remaining-display" data-time-remaining="6868" data-activity-url="https://edu.exceedlms.com/student/activity/1804358-gemini-certification-for-educators" data-time-has-expired-message="You&#39;ve reached the time limit." data-leave-early-message="If you leave this timed assessment, you will be unable to resume from where you left off." class="coursebar__timer">01:53:05</span>
+</div>
+
+<form class="edit_assessment_response" id="time-limit-expired" action="https://edu.exceedlms.com/assessment_responses/107923515/time_limit_expired" accept-charset="UTF-8" data-remote="true" method="post">
+  <input type="hidden" name="timed_response_code" id="timed_response_code" value="117051" autocomplete="off">
+</form>
+<form class="edit_assessment_response" id="leave-early" action="https://edu.exceedlms.com/assessment_responses/leave_early/107923515" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="xfuHuxtNy2uLvFsra3rMfSh35qrt8cXOKcZgq8DhLB06Fhdp9ZyV0CpAQQZgzO8mZ+BaG2xEx6gFisyYT9KXWQ==" autocomplete="off">
+  <input type="hidden" name="timed_response_code" id="timed_response_code" value="117051" autocomplete="off">
+  <input type="hidden" name="leave_url" id="leave_url" value="https://edu.exceedlms.com/student/activity/1804358-gemini-certification-for-educators" autocomplete="off">
+  <input type="hidden" name="time" id="left-assessment-time" value="399" autocomplete="off">
+</form>
+
+
+
+
+          </div>
+        </div>
+
+  </div>
+</header>
+
+
+
+<div class="coursepage">
+  <div class="coursepage__content">
+    <div class="coursepage__contentmain">
+      
+
+      
+<article class="assessment">
+  <div id="question-1922719" class="question">
+    
+<header class="question__header">
+  <h2 class="u-headingsection--assessment">
+    Question 8 of 37
+  </h2>
+
+
+    <span class="question__watermark">31290403</span>
+
+
+  <p class="question__errors" data-error-message="" style="display: none;">Question could not be saved</p>
+</header>
+
+    
+
+    <form id="assessment_response_form" enctype="multipart/form-data" action="https://edu.exceedlms.com/assessment_responses/answer/107923515?survey=false" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="xfuHuxtNy2uLvFsra3rMfSh35qrt8cXOKcZgq8DhLB06Fhdp9ZyV0CpAQQZgzO8mZ+BaG2xEx6gFisyYT9KXWQ==" autocomplete="off">
+
+      <input type="hidden" name="question_id" value="1922719">
+      <input type="hidden" id="time" name="time" value="399">
+      <input type="hidden" id="question_time" name="question_time" value="83">
+      <input type="hidden" name="target_path_after_submit" id="target_path_after_submit" autocomplete="off">
+
+      <div role="group" aria-labelledby="question_body_1922719">
+      <div class="question__question">
+        <p id="question_body_1922719">An educator has a new school policy to read and understand, how can Gemini help with this task? (Select all which apply)</p>
+
+
+      </div>
+
+      <div class="question__answer">
+
+              <p class="question__instruction">
+                  Select All Correct Responses
+              </p>
+
+
+        
+
+    <ul class="question__choices" data-question-type="multiplechoice">
+    <li class="question__choicesitem">
+        <label class="checkbox" for="choice_id_0"><input type="hidden" name="choice_id[]" value="0" autocomplete="off"><input type="checkbox" name="choice_id[]" id="choice_id_0" value="7481482" data-non-text-option-of-question-id="1922719" class="checkbox__input"><span class="checkbox__ui"></span><span class="checkbox__label">Upload a PDF of the policy and then ask Gemini for a Summary. </span></label>
+    </li>
+    <li class="question__choicesitem">
+        <label class="checkbox" for="choice_id_1"><input type="hidden" name="choice_id[]" value="0" autocomplete="off"><input type="checkbox" name="choice_id[]" id="choice_id_1" value="7481483" data-non-text-option-of-question-id="1922719" class="checkbox__input"><span class="checkbox__ui"></span><span class="checkbox__label">Use Deep Research to create a new school policy on the same topic.</span></label>
+    </li>
+    <li class="question__choicesitem">
+        <label class="checkbox" for="choice_id_2"><input type="hidden" name="choice_id[]" value="0" autocomplete="off"><input type="checkbox" name="choice_id[]" id="choice_id_2" value="7481481" data-non-text-option-of-question-id="1922719" class="checkbox__input"><span class="checkbox__ui"></span><span class="checkbox__label">Upload a PDF of the policy into Gemini and use Guided Learning to learn more about it.</span></label>
+    </li>
+    <li class="question__choicesitem">
+        <label class="checkbox" for="choice_id_3"><input type="hidden" name="choice_id[]" value="0" autocomplete="off"><input type="checkbox" name="choice_id[]" id="choice_id_3" value="7481480" data-non-text-option-of-question-id="1922719" class="checkbox__input"><span class="checkbox__ui"></span><span class="checkbox__label">Upload a PDF of the policy into Gemini and ask Gemini to create an audio overview.</span></label>
+    </li>
+</ul>
+
+
+    <input type="hidden" name="media_asset_id" id="media_asset_id" autocomplete="off">
+
+
+        <p id="aria-drag-message" class="a11y-atonly">This item can be moved. Use the space bar to grab it.</p>
+      </div>
+      </div>
+
+
+
+      <div class="question__submit">
+
+        <button id="assessment-response-submit" type="submit" class="button button--primary button--disabled" data-optional-question="false" data-question-type="multiple_choice" data-submit-text="Submit" data-skip-text="Skip" readonly="readonly">
+          Next
+        </button>
+      </div>
+</form>
+  </div>
+</article>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <div class="dialog dialog--award" id="award-dialog" role="dialog" aria-hidden="true" data-intelluminitialized="true">
+      <div class="dialog__content award dialog__content--removedefaults" role="document"></div>
+    </div>
+
+
+
+
+
+
+
+
+    
+  <div class="dialog dialog--assessments" id="timed_assessment_time_ran_out" role="dialog" aria-hidden="true" aria-describedby="timed_assessment_time_ran_out-heading" data-intelluminitialized="true">
+    <div class="dialog__content ">
+      <div class="dialog__header">
+        <h2 id="timed_assessment_time_ran_out-heading" class="u-headingdialog dialog__heading">
+          Time's Up!
+        </h2>
+      </div>
+      <div class="dialog__contentbody" data-dialog-content="true">
+        
+    <p>You've reached the time limit.</p>
+    <div class="dialog__footer">
+      <button class="button button--primary" data-behavior="hide.dialog" data-dialog-id="timed_assessment_time_ran_out" role="button">OK</button>
+    </div>
+
+      </div>
+        <button class="button dialog__close u-orgcolor--hovercolor" type="button" data-behavior="hide.dialog" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="btnicon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+        </button>
+    </div>
+  </div>
+
+  <div class="dialog dialog--assessments" id="confirm_timed_assessment_leave_early" role="dialog" aria-hidden="true" aria-describedby="confirm_timed_assessment_leave_early-heading" data-intelluminitialized="true">
+    <div class="dialog__content ">
+      <div class="dialog__header">
+        <h2 id="confirm_timed_assessment_leave_early-heading" class="u-headingdialog dialog__heading">
+          Important: Before You Leave
+        </h2>
+      </div>
+      <div class="dialog__contentbody" data-dialog-content="true">
+        
+    <p>If you leave this timed assessment, you will be unable to resume from where you left off.</p>
+    <div class="dialog__footer">
+      <button class="button button--primary" data-behavior="hide.dialog" data-dialog-id="confirm_timed_assessment_leave_early" role="button">Stay &amp; Continue</button>
+      <button id="leave_timed_assessment_early_button" class="button button--primary" role="button">Leave</button>
+    </div>
+
+      </div>
+        <button class="button dialog__close u-orgcolor--hovercolor" type="button" data-behavior="hide.dialog" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="btnicon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+        </button>
+    </div>
+  </div>
+
+
+    <exceed-modal-helper aria-live="polite"></exceed-modal-helper>
+
+
+  </main>
+
+  <script src="./Gemini Certification for Educators mutil_files/application-9be9a51b600fb5a9e325f10ee3eac25cd7a77278b3999c68812ae4687974e610.js.download"></script>
+
+    <script src="./Gemini Certification for Educators mutil_files/jquery-ui.min-4fe4dd3b5ed6d280eb8e72b6acf1015b889a5b35972f31f354232890404ae679.js.download"></script>
+<script src="./Gemini Certification for Educators mutil_files/jquery.ui.touch-punch-03546c95e1f76cc59a152515c684f2740920896d966f578cce1ce6a1a64abeac.js.download"></script>
+
+  
+
+  
+
+    <script>
+    if (updateAssessmentTime && typeof updateAssessmentTime === 'function') {
+      setInterval(function() {
+        updateAssessmentTime(1);
+      }, 1000);
+    }
+
+    $(function() {
+      var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
+
+      if ($('.sortable').length > 0 && isTouchDevice) {
+        el = $('.sortable')[0]
+        new Sortable(el);
+      }
+    });
+  </script>
+
+
+
+  
+
+
+
+  <script src="./Gemini Certification for Educators mutil_files/components.js-BfHNs32V.js.download" crossorigin="anonymous" type="module"></script><link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/exceed-searchable-select-Br7JgWsO.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/index-ClYKNXIe.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/initMarkdownEditor-Cqtth1Dn.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/index-CLM_5g_X.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/index-BHRJwdtv.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/index-kmS9qdPh.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/centrifugo-BsvgsNVK.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/index-DgbZe0ek.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/index-DRH4qILr.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/_commonjsHelpers-BosuxZz1.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/jsx-runtime-DNGZQ4GM.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/index-C75_h0qM.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="https://edu.exceedlms.com/vite/assets/index-5scRru-l.js" as="script" crossorigin="anonymous">
+
+    <script>
+  if ($("body").hasClass("body--logged-in") &&
+      performance.navigation.type == performance.navigation.TYPE_BACK_FORWARD) {
+    jQuery.ajax({
+      url : '/student/authentication/heartbeat',
+      type: 'POST',
+      statusCode: {
+        403: function(data) {
+          window.location.reload()
+        }
+      }
+    });
+  }
+  </script>
+
+  
+
+  <style>
+  :root {
+    --ids-color-brand-rgb: 49, 104, 246;
+  }
+</style>
+
+
+<veepn-lock-screen><template shadowrootmode="open"><style>html{box-sizing:border-box;text-size-adjust:100%;word-break:normal;tab-size:4}*,:before,:after{background-repeat:no-repeat;box-sizing:border-box}:before,:after{text-decoration:inherit;vertical-align:inherit}*{padding:0;margin:0}hr{overflow:visible;height:0;color:inherit;border:0;border-top:1px solid}details,main{display:block}summary{display:list-item}small{font-size:80%}[hidden]{display:none!important}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}a{background-color:transparent}a:active,a:hover{outline-width:0}code,kbd,pre,samp{font-family:monospace}pre{font-size:1em}b,strong{font-weight:bolder}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-color:inherit;text-indent:0}iframe{border-style:none}input{border-radius:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{appearance:none}textarea{overflow:auto;resize:vertical}button,input,optgroup,select,textarea{font:inherit;color:inherit}optgroup{font-weight:700}button{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit],[role=button]{cursor:pointer}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button,html [type=button],[type=reset],[type=submit]{appearance:auto}button,input,select,textarea{background-color:transparent;border-style:none}button:-moz-focusring,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{outline:1px dotted ButtonText}select{appearance:none}a:focus,button:focus,input:focus,select:focus,textarea:focus{outline-width:0}select::-ms-expand{display:none}select::-ms-value{color:currentcolor}legend{border:0;color:inherit;display:table;white-space:normal;max-width:100%}::-webkit-file-upload-button{appearance:auto;color:inherit;font:inherit}[disabled]{cursor:default}img{border-style:none}progress{vertical-align:baseline}[aria-busy=true]{cursor:progress}[aria-controls]{cursor:pointer}[aria-disabled=true]{cursor:default}ul,ol{list-style-type:none}figure{margin:0}@keyframes slide-in{0%{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}.gradient-blue{background:radial-gradient(106.41% 128.47% at 50.15% 128.47%,#23abff,#3066ff)}.gradient-green{background:radial-gradient(92.26% 118.88% at 50.15% .13%,#00c3c3,#00aab3)}.gradient-purple{background:radial-gradient(165.12% 115.56% at 50.15% .13%,#a15aff,#00a0eb)}.bg-blue{background-color:#f2f5ff}.bg-purple{background-color:#f7f0ff}.bg-green{background-color:#ebffed}.lock-screen{font-family:FigtreeVF,sans-serif;letter-spacing:normal;position:fixed;z-index:2147483638;right:24px;bottom:24px;width:327px;border-radius:24px;overflow:hidden;box-shadow:0 24px 32px #00000014;animation:slide-in .3s ease-in-out forwards}.lock-screen__content{position:relative;padding:24px 24px 64px}.lock-screen__close{position:absolute;top:16px;right:16px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;opacity:.5}.lock-screen__label{height:26px;width:fit-content;border-radius:50px;background-color:#fff3;padding-inline:16px;display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;font-size:12px;line-height:18px;margin:-8px auto 16px}.lock-screen__title{color:#fff;text-align:center;font-size:20px;line-height:28px;font-weight:600;margin-bottom:8px}.lock-screen__description{color:#f5f6f7;text-align:center;font-size:14px;line-height:20px}.lock-screen__description b{font-weight:600}.lock-screen__card{position:relative;z-index:1;margin-top:-44px;background-color:#fff;border-radius:24px;padding:32px 20px 20px}.lock-screen__inner{margin-bottom:24px}.lock-screen__submit{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:16px;height:40px;width:100%;border-radius:12px;padding-inline:16px;background-color:#f70;color:#fff;margin-bottom:16px}.lock-screen__skip{display:flex;align-items:center;justify-content:center;font-size:14px;line-height:20px;color:#82829c;margin-inline:auto}.price-card{border:1px solid #f2f2fc;background:linear-gradient(254.14deg,#fafbff .04%,#f5f8ff 100.04%);border-radius:24px;padding:24px 28px}.price-card__label{color:#4a5764;text-align:center;font-size:14px;line-height:20px;text-transform:uppercase;margin-bottom:16px}.price-card__price{display:flex;justify-content:center;align-items:flex-start;column-gap:2px;margin-bottom:12px}.price-card__currency{color:#515478;font-size:18px;line-height:28px}.price-card__number{color:#14142a;text-align:center;font-size:64px;line-height:54px}.price-card__wrap{display:flex;flex-direction:column}.price-card__decimal{color:#515478;font-size:18px;line-height:28px;font-weight:600}.price-card__period{color:#515478;font-size:14px;line-height:20px;margin-top:-6px}.price-card__discount{position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:12px}.price-card__discount-divider{position:absolute;z-index:0;top:50%;left:0;width:100%;height:1px;background-color:#dbe2f9;transform:translateY(-50%)}.price-card__discount-icon{position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%)}.price-card__discount-text{position:relative;z-index:2;color:#fff;font-size:12px;font-weight:600;line-height:18px}.price-card__features{display:flex;align-items:center;justify-content:center;column-gap:16px}.price-card__feature{color:#222e3a;font-size:14px;line-height:20px;display:flex;align-items:center;gap:6px}.price-card__feature:before{content:"";display:block;width:4px;height:4px;background-color:#20df9e;border-radius:50%;flex-shrink:0}.features-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.features-list__item{display:flex;flex-direction:column;align-items:center;gap:6px}.features-list__icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center}.features-list__text{color:#293a53;text-align:center;font-size:16px;line-height:24px;letter-spacing:-.1px}</style></template><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2 supports variations"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2-variations");font-weight:100 1000;font-display:swap}</style></veepn-lock-screen></body></html>

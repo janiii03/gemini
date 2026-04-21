@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr" data-timezone="Asia/Bangkok">
+<head>
+
+<script>
+  window.Intellum = {
+    ...window.Intellum,
+    accountName: 'Google for Education',
+    accountFullDomain: 'https://edu.exceedlms.com/',
+    datepickerI18n: {
+      previousMonth: "Previous Month",
+      nextMonth: "Next Month",
+      weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      weekdaysShort: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+      months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+    },
+    i18nStrings: {
+      add_text_here: "Add text here",
+      in_days: "in {{COUNT}} days",
+      in_hours: "in {{COUNT}} hours",
+      in_minutes: "in {{COUNT}} minutes",
+      in_one_hour: "in 1 hour",
+      in_one_minute: "in 1 minute",
+      item_dropped: "\"{{ITEM NAME}}\" dropped at position {{POSITION}} of {{TOTAL ITEMS}}.",
+      item_grabbed: "\"{{ITEM NAME}}\" grabbed. Current position: {{POSITION}} of {{TOTAL ITEMS}}. Use up and down keys to move the item, space bar to drop it, Escape to cancel.",
+      item_move_canceled: "Move of \"{{ITEM NAME}}\" canceled.",
+      item_moved_to_position: "\"{{ITEM NAME}}\" moved to position {{POSITION}} of {{TOTAL ITEMS}}.",
+      item_moved_to_position_in_list: "\"{{ITEM NAME}}\" moved to position {{POSITION}} of {{TOTAL ITEMS}} in \"{{LIST NAME}}.\"",
+      live_now: "LIVE NOW",
+      loading: "Loading...",
+      processing_ellipsis: "Processing...",
+      remove: "Remove",
+      removing_ellipsis: "Removing...",
+      saving_ellipsis: "Saving...",
+      search_results: "Search Results",
+      showing_item_position_of_total: "Showing item {{POSITION}} of {{TOTAL ITEMS}}",
+      start_creating_content: "Start creating content",
+      there_was_a_problem_getting_your_updates: "There was a problem in getting your updates.",
+      tomorrow: "tomorrow",
+      topicsSuggestionEmpty: "Sorry. We've run out of suggested topics.",
+      topicsSelectionEmpty: "No topics have been assigned to this activity.",
+      topicsFollowedSelectionEmpty: "No topics have been followed yet.",
+      upload_canceled: "The upload was canceled.",
+      uploadfile_no_file_selected: "No file selected",
+      uploadfile_uploading_msg: "Uploading {{FILENAME}}",
+      uploadfile_error_format_msg: "{{FILENAME}} is not the correct file type. Please try again.",
+      uploadfile_error_size_coursefile_msg: "{{FILENAME}} is too large. Size limit: 10MB for images, 3GB for videos and audio.",
+      uploadfile_error_size_msg: "{{FILENAME}} is too big. Please try again.",
+      uploadfile_error_msg: "There was a problem uploading {{FILENAME}}. Please try again.",
+      uploading_ellipsis: "Uploading...",
+      use_menu_edit_html: "Use menu to edit HTML",
+      when_datepicket_widget_appears: "When the datepicker widget appears, use arrow keys to navigate dates and select a date.",
+    },
+    mediumEditorI18n: {
+      bold: "Bold",
+      italic: "Italic",
+      link: "Link",
+      title: "Title",
+      subtitle: "Subtitle",
+      unorderedList: "Unordered List",
+      orderedList: "Ordered List",
+      quote: "Quote",
+      linkPlaceholderText: "Paste or type a link...",
+      save: "Save",
+      close: "Close",
+    },
+    properties: {
+      courseContentFileSizeConstraintsInMB: {
+        image: 10485760,
+        video: 3221225472,
+        audio: 3221225472,
+      },
+    },
+    translation_paths: {
+        'ar': '/locales/ar.82eb70d8752db6fb99ff69988134ac3e.json',
+        'bg': '/locales/bg.c7cc97dea99387391ce4000a82bfccfc.json',
+        'bn': '/locales/bn.140455b821f1989b842da1ec1bb9df5d.json',
+        'cs': '/locales/cs.94e96c864f5db7684d01c04354851d13.json',
+        'da': '/locales/da.029a6258e33e99988d173cb1183ea637.json',
+        'de': '/locales/de.27e2065e5794ca7ba3c943ce85d9835c.json',
+        'el': '/locales/el.ed1f806487b4d36b7ac33c1dbdfc3a45.json',
+        'en-AU': '/locales/en-AU.ebd89ff57f0b6b703674ebebe1d6bb00.json',
+        'en-CA': '/locales/en-CA.26f1c2a40f9827febdd6eff9d9267f8c.json',
+        'en-GB': '/locales/en-GB.81e81ddc55c661e9f5b0f6c81206f4df.json',
+        'en-IN': '/locales/en-IN.0dc88e0e462cc707b85fc619dbfdc98e.json',
+        'en-SG': '/locales/en-SG.6aad46d009323900eeb7a34884a21c39.json',
+        'en': '/locales/en.eae06126a7a3cb1274079e70b55bf051.json',
+        'es-419': '/locales/es-419.3a6538992d01f145b64d31b57df0472e.json',
+        'es-MX': '/locales/es-MX.831cbf979324df824de58d32902e9918.json',
+        'es': '/locales/es.83732d5c5207c7afe61ccb185d0e8018.json',
+        'et': '/locales/et.c98359aa61c8bc881784ac0c2177e912.json',
+        'fi': '/locales/fi.06ddf8e6b886b4bc960bb0ff0264ebce.json',
+        'fr-CA': '/locales/fr-CA.339748a249e287df2a649cec1e3072c2.json',
+        'fr': '/locales/fr.dab9e17b2acac25d80a661ba5c9c0d2e.json',
+        'he': '/locales/he.62270d662a0b5630d60c0ec841c0bbea.json',
+        'hi': '/locales/hi.ba939aa5160e1460bbbe0455594e9439.json',
+        'hr': '/locales/hr.69702bbb0cd9571d90dc455a5e4b02a0.json',
+        'hu': '/locales/hu.8b37181608775d9f0516160dfab7bb92.json',
+        'id': '/locales/id.093c5fe13b0f582a3af7ee0db673b1dc.json',
+        'it': '/locales/it.435558835c2ee67948f5dd554470ac81.json',
+        'ja': '/locales/ja.de6b810f2b6c43de43b92466f2f9bbaf.json',
+        'kn': '/locales/kn.21b08f9407a0ccec7f551f7382af1e20.json',
+        'ko': '/locales/ko.2d10ce327009be7efd1664442f5fedd2.json',
+        'lt': '/locales/lt.580b1ce3d05447f72bceeeb88f44e1b5.json',
+        'lv': '/locales/lv.c5d3c1d787e53c5eac20beddc428e6cc.json',
+        'mn': '/locales/mn.b80e1f22931d119cc603e6b3e9d276c8.json',
+        'mr': '/locales/mr.3f6a1f8b9e44bb1c4cd5a2ba5260c460.json',
+        'ms': '/locales/ms.486d614f3ff675e5c2f2ce42e407ac1d.json',
+        'my': '/locales/my.b2fc4e5fa3021fbb74d7483f7a158ba9.json',
+        'nb': '/locales/nb.c662a4186504217e5138f4405c5ac02b.json',
+        'nl': '/locales/nl.f7ac85da1b8dfbc3ecdd55f4bc2bd037.json',
+        'pl': '/locales/pl.788fc13f98adda8b56683a2a3597605e.json',
+        'pt-BR': '/locales/pt-BR.83a244af60cee4362f6e9af4a0b25224.json',
+        'pt-PT': '/locales/pt-PT.7be5e629f21e269201da96cf4bf274c8.json',
+        'ro': '/locales/ro.ffcf617f4613e4936468f28e04ccd327.json',
+        'ru': '/locales/ru.ba578a7c824c87375a1acbd449adc276.json',
+        'si': '/locales/si.f273f442ed27994a2a51bb85ac0633f2.json',
+        'sk': '/locales/sk.0059f5ef3205e28f17b3c9bdee2119da.json',
+        'sl': '/locales/sl.536950420cbc990340740a1f19b67bc4.json',
+        'sr-Cyrl': '/locales/sr-Cyrl.97abfc018aec6c152885627c7f516ad4.json',
+        'sr-Latn': '/locales/sr-Latn.0e96c3f98395a3bcdebaecbdae8fa21b.json',
+        'sv': '/locales/sv.22b37f3125ec620c9c915655ea0c84c5.json',
+        'ta': '/locales/ta.0cf54a3070746cfbab4b00240f331e9d.json',
+        'te': '/locales/te.b95c79b5e5af8d5710cbb50c77e4cc79.json',
+        'th': '/locales/th.8a2d430a8c442fbe35e211e2185fd56b.json',
+        'tr': '/locales/tr.268226fb3638d41cba7b84b4fcdfbc81.json',
+        'uk': '/locales/uk.7daae2d305884359e564eefb9dcaee40.json',
+        'vi': '/locales/vi.9138964f55bc054d63abfa4c30147ecb.json',
+        'zh-CN': '/locales/zh-CN.77ddfc89407df36e6acd0c33145e5881.json',
+        'zh-TW': '/locales/zh-TW.472774415ba4a4aa566a8460cc4e8176.json',
+    },
+  };
+</script>
+
+
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/349/small/logo-googleg-gradient-color-1x-web-24dp-1.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=aZdyfI5YDQdfCEurlHPdTO3FP%2BA%3D&amp;Expires=1770157489" sizes="16x16">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/349/medium/logo-googleg-gradient-color-1x-web-24dp-1.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=Y83BcrnMHJaAf1CEMbnjwBFarWE%3D&amp;Expires=1770157489" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/349/large/logo-googleg-gradient-color-1x-web-24dp-1.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=PXOBqyjrJvQ4jFAr0LQ1toqltqM%3D&amp;Expires=1770157489" sizes="96x96">
+
+  <meta charset="utf-8" />
+  
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+
+    <meta name="apple-itunes-app" content="app-id=1087150865, app-argument=https://edu.exceedlms.com/assessment_responses/take" />
+    <link rel="manifest" href="/manifest.json" />
+
+
+
+
+    <title>Gemini Certification for Educators</title>
+
+
+
+
+    <meta content="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/open_graph_images/349/full/525x295-cims-logo-google-for-education-lockup-vertical-rgb-01-1.png" property="og:image" />
+
+    <meta name="centrifugo-public-url" content="wss://websockets-v5.intellum.com" /><meta name="centrifugo-connection-token" content="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGNlZWQtZ29vZ2xlX2V4dGVybmFsLXByb2R1Y3Rpb24tMzA1NjkwOTMifQ.HQ-BwMRY-gwhr7SPYs-ej_LCFXVZ__ezhcsKBg341OE" />
+
+  <link rel="stylesheet" href="https://edu.exceedlms.com/custom_fonts/349/font_faces-1741047541176779.css" media="all" />
+
+  <link rel="stylesheet" href="/assets/google/all-b8fd179b06d74291811d88c2797fb04e845ac7d470dd60708fdc91b90fec0d7d.css" media="all" />
+  <link rel="stylesheet" href="/theme/349-default/1770129521/styles.css" media="all" />
+  
+
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="RKrRHmsqDlQ9e3SJEZRZX3yA78j5v3kSONekfw7fIcD/cxy6+P0oujcgia29z+5wvOP7484jbF9xSgNvcojyXg==" />
+
+  
+
+  
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(
+      {'user_id': 30569093}
+    );
+    window.dataLayer.push({'cluster': "google_external"});
+    window.dataLayer.push({'environment': "production"})
+</script>
+
+  <script>
+    window.IntellumDataLayer = window.IntellumDataLayer || {"account":{"id":1066,"name":"Google for Education"},"organization":{"id":349,"code":null,"name":"Default"},"user":{"id":30569093,"code":"113557144313529192028","uid":"113557144313529192028","locale":"en","authority":"student","tzid":"Hanoi","last_login_at":"2026-02-03T10:12:47-06:00","custom_a":"1","custom_b":"ss","custom_c":"","custom_d":"Personal Email Address","custom_e":"","custom_f":"Personal Email Address","custom_g":"Yes (Note: You may skip the next question and click Register)","custom_h":"","custom_i":"redacted","custom_j":"redacted","custom_k":"redacted","custom_l":"redacted","custom_m":"redacted","custom_n":"redacted","custom_o":"redacted","custom_p":"redacted","custom_q":"redacted","custom_r":"redacted","custom_s":"redacted","custom_t":"redacted","custom_u":"redacted"},"course":null,"course_session":null,"enrollment":{"id":448662482,"code":"i-448662482","started_on":"2026-02-03T23:13:46+07:00","enrolled_on":"2026-02-03T23:12:33+07:00","due_on":null,"expires_on":null,"completed_on":null,"last_opened_on":"2026-02-03T23:13:43+07:00","status":"in-progress","relationship_type":"required"},"page_type":null,"search":null};
+</script>
+
+  
+
+
+
+  <!-- Intellum GA4 script -->
+  <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=G-9QZZZPK0JH"></script>
+  <script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9QZZZPK0JH');
+  </script>
+
+  <script type="text/javascript">
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+          ga('create', 'UA-45326746-3', 'auto', {
+              'name': 'intellumTracker',
+              'userId': 'google_external-30569093'});
+    ga('intellumTracker.set', 'anonymizeIp', true);
+    ga('intellumTracker.send', 'pageview');
+  </script>
+  <script type="text/javascript" async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+  
+
+  
+
+
+
+
+  
+</head>
+
+<body class="body--logged-in student_assessment" data-controller="assessment_responses" data-action="take" data-custom-ui="google">
+
+  
+
+  
+
+
+  <a href="#main" class="skip2content">
+    Skip to main content
+  </a>
+
+
+  
+
+  <main class="main main--student" id="main" >
+
+      
+  
+<header id="coursebar" class="coursebar" data-handle-top-pos="true">
+  <div class="coursebar__container">
+    <div class="coursebar__content">
+      <a class="coursebar__close hint hint--bottom-right" id="course_close" data-hint="Close" data-hint-is-label="true" href="https://edu.exceedlms.com/student/activity/1804358-gemini-certification-for-educators">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+</a>        <h1 class="u-headingpage--coursebar">Gemini Certification for Educators</h1>
+    </div>
+
+
+        <div class="coursebar__actions">
+          <div class="coursebar__stats" data-neeman-class="progress">
+            <div class="coursebar__progress">
+                Progress: 1 of 37
+            </div>
+              
+<div class="coursebar__timelimit">
+  <span class="coursebar__label">Time Limit: </span>
+  <span id="time-remaining-display"
+        data-time-remaining="7035"
+        data-activity-url="https://edu.exceedlms.com/student/activity/1804358-gemini-certification-for-educators"
+        data-time-has-expired-message="You've reached the time limit."
+        data-leave-early-message="If you leave this timed assessment, you will be unable to resume from where you left off."
+        class="coursebar__timer ">
+    01:57:15
+  </span>
+</div>
+
+<form class="edit_assessment_response" id="time-limit-expired" action="/assessment_responses/106482461/time_limit_expired" accept-charset="UTF-8" data-remote="true" method="post">
+  <input type="hidden" name="timed_response_code" id="timed_response_code" value="721048" autocomplete="off" />
+</form>
+<form class="edit_assessment_response" id="leave-early" action="/assessment_responses/leave_early/106482461" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="iMG6ICCmn0bIZvrDSbAEpQRNfzex7jRY3K6wLi65wSDy/b+U6giEpd0xVMHoE96nSp6DUC3ncW88qx9ZYbz5JA==" autocomplete="off" />
+  <input type="hidden" name="timed_response_code" id="timed_response_code" value="721048" autocomplete="off" />
+  <input type="hidden" name="leave_url" id="leave_url" value="https://edu.exceedlms.com/student/activity/1804358-gemini-certification-for-educators" autocomplete="off" />
+  <input type="hidden" name="time" id="left-assessment-time" value="0" autocomplete="off" />
+</form>
+
+
+
+
+          </div>
+        </div>
+
+  </div>
+</header>
+
+
+
+<div class="coursepage">
+  <div class="coursepage__content">
+    <div class="coursepage__contentmain">
+      
+
+      
+<article class="assessment">
+  <div id="question-1922680" class="question" >
+    
+<header class="question__header">
+  <h2 class="u-headingsection--assessment">
+    Question 1 of 37
+  </h2>
+
+
+    <span class="question__watermark">30569093</span>
+
+
+  <p class="question__errors" data-error-message style="display: none;">Question could not be saved</p>
+</header>
+
+    
+
+    <form id="assessment_response_form" enctype="multipart/form-data" action="/assessment_responses/answer/106482461?survey=false" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="BIKZ59MSquBcyTlop55hbmT1zsS1dLBeFGxlANQRxLdQKknfVwWtVoJKYl9RsHls+FnZG10iyLnh5Ob4b19oJg==" autocomplete="off" />
+
+      <input type="hidden" name="question_id" value="1922680" />
+      <input type="hidden" id="time" name="time" value="0" />
+      <input type="hidden" id="question_time" name="question_time" value="0" />
+      <input type="hidden" name="target_path_after_submit" id="target_path_after_submit" autocomplete="off" />
+
+      <div class="question__question">
+        <p>To help geometry students overcome common misconceptions about finding the area of triangles, how can an educator best prompt Gemini to generate model answers addressing these errors?</p>
+
+
+      </div>
+
+      <div class="question__answer">
+
+
+
+        
+
+    <ul class="question__choices" data-question-type="multiplechoice">
+    <li class="question__choicesitem">
+        <label class="radio" for="choice_id_0"><input type="radio" name="choice_id[]" id="choice_id_0" value="7481356" data-non-text-option-of-question-id="1922680" class="radio__input" /><span class="radio__ui "></span><span class="radio__label">List common errors in triangle area calculations and then write the explanations suitable for students.</span></label>
+    </li>
+    <li class="question__choicesitem">
+        <label class="radio" for="choice_id_1"><input type="radio" name="choice_id[]" id="choice_id_1" value="7481355" data-non-text-option-of-question-id="1922680" class="radio__input" /><span class="radio__ui "></span><span class="radio__label">Act as a highly skilled high school math teacher specializing in diagnosing and addressing misconceptions, provide 3-4 model responses addressing common student errors, including detailed explanations suitable for students.</span></label>
+    </li>
+    <li class="question__choicesitem">
+        <label class="radio" for="choice_id_2"><input type="radio" name="choice_id[]" id="choice_id_2" value="7481357" data-non-text-option-of-question-id="1922680" class="radio__input" /><span class="radio__ui "></span><span class="radio__label">Find online resources that explain how to find the area of triangles.</span></label>
+    </li>
+</ul>
+
+
+    <input type="hidden" name="media_asset_id" id="media_asset_id" autocomplete="off" />
+
+
+        <p id="aria-drag-message" class="a11y-atonly">This item can be moved. Use the space bar to grab it.</p>
+      </div>
+
+
+
+      <div class="question__submit">
+
+        <button id="assessment-response-submit"
+            type="submit"
+            class="button button--primary button--disabled"
+            data-optional-question="false"
+            data-question-type="single_choice"
+            data-submit-text="Submit"
+            
+            data-skip-text="Skip">
+          Next
+        </button>
+      </div>
+</form>
+  </div>
+</article>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+    <div class="dialog dialog--award" id="award-dialog"
+         role="dialog"
+         aria-hidden="true">
+      <div class="dialog__content award dialog__content--removedefaults" role="document"></div>
+    </div>
+
+
+
+
+
+
+
+
+    
+  <div class="dialog dialog--assessments"
+    id="timed_assessment_time_ran_out" role="dialog" aria-hidden="true"
+        aria-describedby="timed_assessment_time_ran_out-heading"
+      
+      >
+    <div class="dialog__content ">
+      <div class="dialog__header">
+        <h2 id="timed_assessment_time_ran_out-heading" class="u-headingdialog dialog__heading">
+          Time&#39;s Up!
+        </h2>
+      </div>
+      <div class="dialog__contentbody" data-dialog-content="true">
+        
+    <p>You've reached the time limit.</p>
+    <div class="dialog__footer">
+      <button class="button button--primary" data-behavior="hide.dialog" data-dialog-id="timed_assessment_time_ran_out" role="button">OK</button>
+    </div>
+
+      </div>
+        <button class="button dialog__close u-orgcolor--hovercolor" type="button" data-behavior="hide.dialog" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="btnicon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+        </button>
+    </div>
+  </div>
+
+  <div class="dialog dialog--assessments"
+    id="confirm_timed_assessment_leave_early" role="dialog" aria-hidden="true"
+        aria-describedby="confirm_timed_assessment_leave_early-heading"
+      
+      >
+    <div class="dialog__content ">
+      <div class="dialog__header">
+        <h2 id="confirm_timed_assessment_leave_early-heading" class="u-headingdialog dialog__heading">
+          Important: Before You Leave
+        </h2>
+      </div>
+      <div class="dialog__contentbody" data-dialog-content="true">
+        
+    <p>If you leave this timed assessment, you will be unable to resume from where you left off.</p>
+    <div class="dialog__footer">
+      <button class="button button--primary" data-behavior="hide.dialog"
+        data-dialog-id="confirm_timed_assessment_leave_early" role="button">Stay &amp; Continue</button>
+      <button id="leave_timed_assessment_early_button" class="button button--primary" role="button">Leave</button>
+    </div>
+
+      </div>
+        <button class="button dialog__close u-orgcolor--hovercolor" type="button" data-behavior="hide.dialog" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="btnicon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+        </button>
+    </div>
+  </div>
+
+
+    <exceed-modal-helper aria-live="polite"></exceed-modal-helper>
+
+
+  </main>
+
+  <script src="/assets/student/application-ac17f86fbbf1552abb04b983b07670e684e59320ba6cda4806190debc2667e38.js"></script>
+
+    <script src="/assets/jquery-ui.min-4fe4dd3b5ed6d280eb8e72b6acf1015b889a5b35972f31f354232890404ae679.js"></script>
+<script src="/assets/jquery.ui.touch-punch-03546c95e1f76cc59a152515c684f2740920896d966f578cce1ce6a1a64abeac.js"></script>
+
+  
+
+  
+
+    <script>
+    if (updateAssessmentTime && typeof updateAssessmentTime === 'function') {
+      setInterval(function() {
+        updateAssessmentTime(1);
+      }, 1000);
+    }
+
+    $(function() {
+      var isTouchDevice = (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
+
+      if ($('.sortable').length > 0 && isTouchDevice) {
+        el = $('.sortable')[0]
+        new Sortable(el);
+      }
+    });
+  </script>
+
+
+
+  
+
+
+
+  <script src="/vite/assets/packs/components.js-BfHNs32V.js" crossorigin="anonymous" type="module"></script><link rel="modulepreload" href="/vite/assets/exceed-searchable-select-Br7JgWsO.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/index-ClYKNXIe.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/initMarkdownEditor-Cqtth1Dn.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/index-CLM_5g_X.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/index-BHRJwdtv.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/index-kmS9qdPh.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/centrifugo-BsvgsNVK.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/index-DgbZe0ek.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/index-DRH4qILr.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/_commonjsHelpers-BosuxZz1.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/jsx-runtime-DNGZQ4GM.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/index-C75_h0qM.js" as="script" crossorigin="anonymous">
+<link rel="modulepreload" href="/vite/assets/index-5scRru-l.js" as="script" crossorigin="anonymous">
+
+    <script>
+  if ($("body").hasClass("body--logged-in") &&
+      performance.navigation.type == performance.navigation.TYPE_BACK_FORWARD) {
+    jQuery.ajax({
+      url : '/student/authentication/heartbeat',
+      type: 'POST',
+      statusCode: {
+        403: function(data) {
+          window.location.reload()
+        }
+      }
+    });
+  }
+  </script>
+
+  
+
+  <style>
+  :root {
+    --ids-color-brand-rgb: 49, 104, 246;
+  }
+</style>
+
+</body></html>

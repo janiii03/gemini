@@ -1,12 +1,23 @@
 {
     "manifest_version": 3,
-    "name": "Q&A Finder - Tìm Đáp Án",
-    "version": "2.2",
+    "name": "Gemini Helper",
+    "version": "2.4",
     "description": "Tìm đáp án phù hợp nhất cho câu hỏi của bạn từ ngân hàng câu hỏi đã lưu",
     "permissions": [
       "storage",
       "activeTab",
-      "contextMenus"
+      "contextMenus",
+      "tabs"
+    ],
+    "host_permissions": [
+      "https://edu.exceedlms.com/*"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["https://edu.exceedlms.com/*", "http://localhost/*", "<all_urls>"],
+        "js": ["default-samples.js", "content.js"],
+        "run_at": "document_idle"
+      }
     ],
     "background": {
       "service_worker": "background.js"

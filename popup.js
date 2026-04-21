@@ -10,6 +10,9 @@ const sampleAnswer = document.getElementById('sampleAnswer');
 const addSampleBtn = document.getElementById('addSampleBtn');
 const samplesList = document.getElementById('samplesList');
 const sampleCount = document.getElementById('sampleCount');
+const autoHighlightToggle = document.getElementById('autoHighlightToggle');
+const toggleStatus = document.getElementById('toggleStatus');
+const toggleBar = document.getElementById('toggleBar');
 
 // Chuyển đổi tabs
 tabBtns.forEach(btn => {
@@ -30,6 +33,24 @@ tabBtns.forEach(btn => {
     }
   });
 });
+
+// Helper function để format đáp án (hỗ trợ cả string và array)
+function formatAnswer(answer) {
+  if (Array.isArray(answer)) {
+    // Nếu là mảng, join các đáp án với dấu bullet
+    return answer.map((item, index) => `${index + 1}. ${item}`).join('\n');
+  }
+  // Nếu là string, return trực tiếp
+  return answer;
+}
+
+// Helper function để lấy text từ answer (dùng cho so sánh)
+function getAnswerText(answer) {
+  if (Array.isArray(answer)) {
+    return answer.join(' ');
+  }
+  return answer;
+}
 
 // Hàm tính độ tương đồng giữa 2 văn bản (Cosine Similarity)
 function calculateSimilarity(text1, text2) {
@@ -130,7 +151,13 @@ function displayResults(comparisons) {
     const similarity = item.similarity.toFixed(1);
     // Hiển thị câu hỏi và đáp án
     const questionPreview = item.question.length > 80 ? item.question.substring(0, 80) + '...' : item.question;
-    const answerPreview = item.answer.length > 200 ? item.answer.substring(0, 200) + '...' : item.answer;
+    
+    // Format đáp án (hỗ trợ cả string và array)
+    const formattedAnswer = formatAnswer(item.answer);
+    const answerPreview = formattedAnswer.length > 200 ? formattedAnswer.substring(0, 200) + '...' : formattedAnswer;
+    
+    // Thay thế \n bằng <br> để hiển thị xuống dòng trong HTML
+    const answerHTML = answerPreview.replace(/\n/g, '<br>');
     
     resultItem.innerHTML = `
       <div class="similarity-bar">
@@ -140,7 +167,7 @@ function displayResults(comparisons) {
       <div class="question-preview"><strong>Câu hỏi:</strong> ${questionPreview}</div>
       <div class="answer-box">
         <strong>✓ Đáp án:</strong>
-        <div class="answer-content">${answerPreview}</div>
+        <div class="answer-content">${answerHTML}</div>
       </div>
     `;
     
@@ -208,14 +235,20 @@ async function loadSamples() {
     sampleItem.className = 'sample-item';
     
     const questionPreview = sample.question.length > 60 ? sample.question.substring(0, 60) + '...' : sample.question;
-    const answerPreview = sample.answer.length > 80 ? sample.answer.substring(0, 80) + '...' : sample.answer;
+    
+    // Format đáp án (hỗ trợ cả string và array)
+    const formattedAnswer = formatAnswer(sample.answer);
+    const answerPreview = formattedAnswer.length > 80 ? formattedAnswer.substring(0, 80) + '...' : formattedAnswer;
+    
+    // Thay thế \n bằng <br> để hiển thị xuống dòng trong HTML
+    const answerHTML = answerPreview.replace(/\n/g, '<br>');
     
     sampleItem.innerHTML = `
       <div class="sample-header">
         <span class="sample-name">❓ ${questionPreview}</span>
         <button class="btn-delete" data-id="${sample.id}">Xóa</button>
       </div>
-      <div class="sample-preview"><strong>Đáp án:</strong> ${answerPreview}</div>
+      <div class="sample-preview"><strong>Đáp án:</strong> ${answerHTML}</div>
     `;
     
     samplesList.appendChild(sampleItem);
@@ -246,30 +279,75 @@ async function deleteSample(id) {
   loadSamples();
 }
 
-// Khởi tạo câu hỏi mẫu mặc định
+// Sync DEFAULT_SAMPLES vào storage (merge, không mất câu hỏi người dùng đã thêm)
 async function initializeDefaultSamples() {
-  const data = await chrome.storage.local.get(['samples', 'initialized']);
-  
-  // Chỉ khởi tạo nếu chưa có dữ liệu và chưa được khởi tạo trước đó
-  if (!data.initialized && (!data.samples || data.samples.length === 0)) {
-    // Load dữ liệu từ file default-samples.js
-    const defaultSamples = DEFAULT_SAMPLES.map((sample, index) => ({
+  const data = await chrome.storage.local.get(['samples']);
+  const storedSamples = data.samples || [];
+
+  // Tìm các câu hỏi trong DEFAULT_SAMPLES chưa có trong storage
+  const storedQuestions = new Set(
+    storedSamples.map(s => s.question.trim().toLowerCase())
+  );
+  const missingSamples = DEFAULT_SAMPLES.filter(
+    s => !storedQuestions.has(s.question.trim().toLowerCase())
+  );
+
+  if (storedSamples.length === 0 || missingSamples.length > 0) {
+    const newEntries = missingSamples.map((sample, index) => ({
       id: Date.now() + index,
       question: sample.question,
       answer: sample.answer,
       category: sample.category || "General",
       createdAt: new Date().toISOString()
     }));
-    
-    // Lưu câu hỏi mẫu mặc định
+
+    const allSamples = [...storedSamples, ...newEntries];
     await chrome.storage.local.set({ 
-      samples: defaultSamples,
+      samples: allSamples,
       initialized: true 
     });
-    
-    console.log(`✅ Đã khởi tạo ${defaultSamples.length} câu hỏi mẫu mặc định`);
+
+    if (newEntries.length > 0) {
+      console.log(`✅ Đã sync ${newEntries.length} câu hỏi mới vào storage`);
+    }
   }
 }
+
+// ====== Toggle bật/tắt auto-highlight ======
+function applyToggleUI(enabled) {
+  autoHighlightToggle.checked = enabled;
+  toggleStatus.textContent = enabled ? 'Đang bật' : 'Đang tắt';
+  if (enabled) {
+    toggleBar.classList.add('enabled');
+  } else {
+    toggleBar.classList.remove('enabled');
+  }
+}
+
+async function loadToggleState() {
+  const { autoHighlightEnabled = false } = await chrome.storage.local.get(['autoHighlightEnabled']);
+  applyToggleUI(autoHighlightEnabled);
+}
+
+async function sendToggleMessage(enabled) {
+  try {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (tab?.id) {
+      await chrome.tabs.sendMessage(tab.id, {
+        action: enabled ? 'highlightOn' : 'highlightOff'
+      });
+    }
+  } catch (_) {
+    // Tab không có content script (trang thường) — bỏ qua
+  }
+}
+
+autoHighlightToggle.addEventListener('change', async () => {
+  const enabled = autoHighlightToggle.checked;
+  applyToggleUI(enabled);
+  await chrome.storage.local.set({ autoHighlightEnabled: enabled });
+  await sendToggleMessage(enabled);
+});
 
 // Sự kiện
 compareBtn.addEventListener('click', compareText);
@@ -299,5 +377,6 @@ async function checkPendingQuestion() {
 (async function init() {
   await initializeDefaultSamples();
   loadSamples();
+  await loadToggleState();
   await checkPendingQuestion();
 })();
