@@ -139,13 +139,13 @@ async function autoHighlightAnswers() {
   const isRadio = !!document.querySelector('.question__choices input[type="radio"]');
 
   // Helper: áp dụng highlight lên 1 item
-  function applyHighlight(item, labelEl) {
+  function applyHighlight(item, labelEl, score) {
     item.setAttribute('data-qaf-highlighted', 'true');
     labelEl.style.color = '#d32f2f';
     if (!item.querySelector('.qaf-check')) {
       const tick = document.createElement('span');
-      tick.className = 'qaf-check';
-      tick.textContent = ' ✓';
+      tick.className = `qaf-check qaf-score-${score}`;
+      tick.textContent = ` ✓ (${score.toFixed(0)}%)`;
       tick.style.cssText = 'color:#d32f2f; font-weight:700; font-size:14px; margin-left:6px;';
       labelEl.appendChild(tick);
     }
@@ -179,7 +179,7 @@ async function autoHighlightAnswers() {
     });
 
     if (bestItem && bestScore > 35) {
-      applyHighlight(bestItem, bestLabelEl);
+      applyHighlight(bestItem, bestLabelEl, bestScore);
       count = 1;
     }
   } else {
@@ -188,7 +188,7 @@ async function autoHighlightAnswers() {
       const labelEl = item.querySelector('.checkbox__label, .radio__label');
       if (!labelEl) return;
       if (choiceMatchesAnswer(labelEl.textContent.trim(), best.answer)) {
-        applyHighlight(item, labelEl);
+        applyHighlight(item, labelEl, scoreChoice(labelEl.textContent.trim()));
         count++;
       }
     });
