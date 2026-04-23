@@ -865,4 +865,21 @@ const DEFAULT_SAMPLES = [
     answer:
       "It provides inline citations that link directly to the relevant passages in your sources.",
   },
+  {
+    question: "A student is having trouble understanding a complex concept in chemistry and needs additional support and practice exercises. Let's put the following tasks in order to come up with a solution to support this student.",
+    answer: [
+      "Take photos of students' work.",
+      "Upload Photos to Gemini",
+      "Ask Gemini to point out common misconceptions.",
+      "Ask Gemini to propose new problems for them to solve."
+    ]
+  },
+  {
+    question: "An educator has a new school policy to read and understand, how can Gemini help with this task?",
+    answer: [
+      "Upload a PDF of the policy and then ask Gemini for a Summary.",
+      "Upload a PDF of the policy into Gemini and use Guided Learning to learn more about it.",
+      "Upload a PDF of the policy into Gemini and ask Gemini to create an audio overview."
+    ]
+  }
 ];

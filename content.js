@@ -87,6 +87,93 @@ function clearHighlights() {
       label.querySelector('.qaf-check')?.remove();
     }
   });
+  document.querySelectorAll('.sequence__listitem[data-qaf-highlighted]').forEach(item => {
+    item.removeAttribute('style');
+    item.removeAttribute('data-qaf-highlighted');
+    item.querySelector('.qaf-seq-order')?.remove();
+  });
+}
+
+// ====== Câu hỏi sắp xếp (sequence): gán thứ tự đúng 1..n cho từng bước ======
+function getSequenceItemTexts(li) {
+  const hiddenInput = li.querySelector('input[name="sequences[]"]');
+  const hidden = (hiddenInput?.value || '').trim();
+  const clone = li.cloneNode(true);
+  clone.querySelectorAll('input').forEach(n => n.remove());
+  const visible = clone.textContent.trim();
+  return { visible, hidden };
+}
+
+function scoreStepAgainstAnswer(texts, answerLine) {
+  const ans = answerLine.trim();
+  if (!ans) return 0;
+  const sVis = calculateSimilarity(texts.visible, ans);
+  const sHid = calculateSimilarity(texts.hidden, ans);
+  let s = Math.max(sVis, sHid);
+  const a = ans.toLowerCase();
+  const v = texts.visible.toLowerCase();
+  const h = texts.hidden.toLowerCase();
+  const prefix = (t) => t.slice(0, Math.min(18, t.length));
+  if (v.length >= 8 && (a.includes(prefix(v)) || v.includes(prefix(a)))) s = Math.max(s, 78);
+  if (h.length >= 8 && (a.includes(prefix(h)) || h.includes(prefix(a)))) s = Math.max(s, 78);
+  return s;
+}
+
+function assignSequencePositions(listItems, orderedAnswers) {
+  const items = [...listItems].map((el, index) => ({
+    el,
+    index,
+    texts: getSequenceItemTexts(el)
+  }));
+  const used = new Set();
+  const positionByEl = new Map();
+
+  orderedAnswers.forEach((ansLine, pos) => {
+    let bestJ = -1;
+    let bestScore = 0;
+    items.forEach((it, j) => {
+      if (used.has(j)) return;
+      const sc = scoreStepAgainstAnswer(it.texts, typeof ansLine === 'string' ? ansLine : String(ansLine));
+      if (sc > bestScore) {
+        bestScore = sc;
+        bestJ = j;
+      }
+    });
+    if (bestJ >= 0 && bestScore > 38) {
+      used.add(bestJ);
+      positionByEl.set(items[bestJ].el, pos + 1);
+    }
+  });
+
+  return positionByEl;
+}
+
+function highlightSequenceAnswers(orderedAnswers) {
+  const sequenceList = document.querySelector('.sequence__list');
+  if (!sequenceList) return false;
+
+  const listItems = sequenceList.querySelectorAll(':scope > li.sequence__listitem, :scope > .sequence__listitem');
+  if (!listItems.length) return false;
+
+  const positionByEl = assignSequencePositions(listItems, orderedAnswers);
+  let count = 0;
+
+  listItems.forEach(li => {
+    const pos = positionByEl.get(li);
+    if (!pos) return;
+    li.setAttribute('data-qaf-highlighted', 'true');
+    if (!li.querySelector('.qaf-seq-order')) {
+      const span = document.createElement('span');
+      span.className = 'qaf-seq-order';
+      span.textContent = ` ${pos}`;
+      // span.style.cssText = 'font-weight:700; font-size:14px; margin-left:6px;';
+      li.appendChild(span);
+    }
+    count++;
+  });
+
+  console.log(`[Q&A Finder] Sequence: đã gán thứ tự cho ${count}/${listItems.length} bước`);
+  return count > 0;
 }
 
 // ====== Hàm highlight chính ======
@@ -132,6 +219,18 @@ async function autoHighlightAnswers() {
   // Xóa highlight cũ
   clearHighlights();
 
+  // Câu sắp xếp: answer là mảng thứ tự đúng; chỉ khi trang có .sequence__list (tránh nhầm checkbox đa chọn)
+  if (
+    document.querySelector('.sequence__list') &&
+    Array.isArray(best.answer) &&
+    best.answer.length >= 2
+  ) {
+    if (highlightSequenceAnswers(best.answer)) {
+      console.log(`[Q&A Finder] Đã hiển thị thứ tự đúng (sequence), khớp câu hỏi ${best.sim.toFixed(0)}%`);
+    }
+    return;
+  }
+
   const choiceItems = document.querySelectorAll('.question__choicesitem');
   let count = 0;
 
@@ -141,12 +240,13 @@ async function autoHighlightAnswers() {
   // Helper: áp dụng highlight lên 1 item
   function applyHighlight(item, labelEl, score) {
     item.setAttribute('data-qaf-highlighted', 'true');
-    labelEl.style.color = '#d32f2f';
+    // labelEl.style.color = '#d32f2f';
     if (!item.querySelector('.qaf-check')) {
       const tick = document.createElement('span');
       tick.className = `qaf-check qaf-score-${score}`;
-      tick.textContent = ` ✓ (${score.toFixed(0)}%)`;
-      tick.style.cssText = 'color:#d32f2f; font-weight:700; font-size:14px; margin-left:6px;';
+      // tick.textContent = ` ✓ (${score.toFixed(0)}%)`;
+      tick.textContent = ` ✓ `;
+      // tick.style.cssText = 'color:#d32f2f; font-weight:700; font-size:14px; margin-left:6px;';
       labelEl.appendChild(tick);
     }
   }
@@ -220,7 +320,10 @@ new MutationObserver(mutations => {
     for (const node of addedNodes) {
       if (
         node.nodeType === 1 &&
-        (node.classList?.contains('question') || node.querySelector?.('.question__question'))
+        (node.classList?.contains('question') ||
+          node.classList?.contains('sequence') ||
+          node.querySelector?.('.question__question') ||
+          node.querySelector?.('.sequence__list'))
       ) {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(autoHighlightAnswers, 400);
