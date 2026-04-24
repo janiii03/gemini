@@ -3,22 +3,32 @@
 // ====== Cosine Similarity (giống popup.js) ======
 function calculateSimilarity(text1, text2) {
   const normalize = (text) =>
-    text.toLowerCase()
-      .replace(/[^\w\sàáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/gi, '')
+    text
+      .toLowerCase()
+      .replace(
+        /[^\w\sàáảãạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵđ]/gi,
+        "",
+      )
       .trim();
 
   const words1 = normalize(text1).split(/\s+/);
   const words2 = normalize(text2).split(/\s+/);
   const allWords = new Set([...words1, ...words2]);
 
-  const v1 = {}, v2 = {};
-  allWords.forEach(w => { v1[w] = 0; v2[w] = 0; });
-  words1.forEach(w => v1[w]++);
-  words2.forEach(w => v2[w]++);
+  const v1 = {},
+    v2 = {};
+  allWords.forEach((w) => {
+    v1[w] = 0;
+    v2[w] = 0;
+  });
+  words1.forEach((w) => v1[w]++);
+  words2.forEach((w) => v2[w]++);
 
-  let dot = 0, mag1 = 0, mag2 = 0;
-  allWords.forEach(w => {
-    dot  += v1[w] * v2[w];
+  let dot = 0,
+    mag1 = 0,
+    mag2 = 0;
+  allWords.forEach((w) => {
+    dot += v1[w] * v2[w];
     mag1 += v1[w] ** 2;
     mag2 += v2[w] ** 2;
   });
@@ -31,13 +41,21 @@ function calculateSimilarity(text1, text2) {
 
 // ====== Kiểm tra một lựa chọn có khớp với đáp án không ======
 function choiceMatchesAnswer(choiceText, answer) {
-  const choiceNorm = choiceText.toLowerCase().replace(/[.,!?]$/g, '').trim();
+  const choiceNorm = choiceText
+    .toLowerCase()
+    .replace(/[.,!?]$/g, "")
+    .trim();
 
   if (Array.isArray(answer)) {
-    return answer.some(ans => {
-      const ansNorm = ans.toLowerCase().replace(/[.,!?]$/g, '').trim();
+    return answer.some((ans) => {
+      const ansNorm = ans
+        .toLowerCase()
+        .replace(/[.,!?]$/g, "")
+        .trim();
       const sim = calculateSimilarity(choiceText, ans);
-      return sim > 50 || ansNorm.includes(choiceNorm) || choiceNorm.includes(ansNorm);
+      return (
+        sim > 50 || ansNorm.includes(choiceNorm) || choiceNorm.includes(ansNorm)
+      );
     });
   }
 
@@ -49,17 +67,18 @@ function choiceMatchesAnswer(choiceText, answer) {
 
 // ====== Sync DEFAULT_SAMPLES vào storage (merge, không mất câu hỏi cũ) ======
 async function ensureSamplesInitialized() {
-  if (typeof DEFAULT_SAMPLES === 'undefined' || DEFAULT_SAMPLES.length === 0) return;
+  if (typeof DEFAULT_SAMPLES === "undefined" || DEFAULT_SAMPLES.length === 0)
+    return;
 
-  const data = await chrome.storage.local.get(['samples']);
+  const data = await chrome.storage.local.get(["samples"]);
   const storedSamples = data.samples || [];
 
   // Tìm các câu hỏi trong DEFAULT_SAMPLES chưa có trong storage
   const storedQuestions = new Set(
-    storedSamples.map(s => s.question.trim().toLowerCase())
+    storedSamples.map((s) => s.question.trim().toLowerCase()),
   );
   const missingSamples = DEFAULT_SAMPLES.filter(
-    s => !storedQuestions.has(s.question.trim().toLowerCase())
+    (s) => !storedQuestions.has(s.question.trim().toLowerCase()),
   );
 
   if (storedSamples.length === 0 || missingSamples.length > 0) {
@@ -67,39 +86,45 @@ async function ensureSamplesInitialized() {
       id: Date.now() + index,
       question: sample.question,
       answer: sample.answer,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     }));
 
     const allSamples = [...storedSamples, ...newEntries];
     await chrome.storage.local.set({ samples: allSamples, initialized: true });
-    console.log(`[Q&A Finder] Đã sync ${newEntries.length} câu hỏi mới vào storage`);
+    console.log(
+      `[Q&A Finder] Đã sync ${newEntries.length} câu hỏi mới vào storage`,
+    );
   }
 }
 
 // ====== Xóa highlight cũ (nếu chuyển câu) ======
 function clearHighlights() {
-  document.querySelectorAll('.question__choicesitem[data-qaf-highlighted]').forEach(item => {
-    item.removeAttribute('style');
-    item.removeAttribute('data-qaf-highlighted');
-    const label = item.querySelector('.checkbox__label, .radio__label');
-    if (label) {
-      label.removeAttribute('style');
-      label.querySelector('.qaf-check')?.remove();
-    }
-  });
-  document.querySelectorAll('.sequence__listitem[data-qaf-highlighted]').forEach(item => {
-    item.removeAttribute('style');
-    item.removeAttribute('data-qaf-highlighted');
-    item.querySelector('.qaf-seq-order')?.remove();
-  });
+  document
+    .querySelectorAll(".question__choicesitem[data-qaf-highlighted]")
+    .forEach((item) => {
+      item.removeAttribute("style");
+      item.removeAttribute("data-qaf-highlighted");
+      const label = item.querySelector(".checkbox__label, .radio__label");
+      if (label) {
+        label.removeAttribute("style");
+        label.querySelector(".qaf-check")?.remove();
+      }
+    });
+  document
+    .querySelectorAll(".sequence__listitem[data-qaf-highlighted]")
+    .forEach((item) => {
+      item.removeAttribute("style");
+      item.removeAttribute("data-qaf-highlighted");
+      item.querySelector(".qaf-seq-order")?.remove();
+    });
 }
 
 // ====== Câu hỏi sắp xếp (sequence): gán thứ tự đúng 1..n cho từng bước ======
 function getSequenceItemTexts(li) {
   const hiddenInput = li.querySelector('input[name="sequences[]"]');
-  const hidden = (hiddenInput?.value || '').trim();
+  const hidden = (hiddenInput?.value || "").trim();
   const clone = li.cloneNode(true);
-  clone.querySelectorAll('input').forEach(n => n.remove());
+  clone.querySelectorAll("input").forEach((n) => n.remove());
   const visible = clone.textContent.trim();
   return { visible, hidden };
 }
@@ -114,8 +139,10 @@ function scoreStepAgainstAnswer(texts, answerLine) {
   const v = texts.visible.toLowerCase();
   const h = texts.hidden.toLowerCase();
   const prefix = (t) => t.slice(0, Math.min(18, t.length));
-  if (v.length >= 8 && (a.includes(prefix(v)) || v.includes(prefix(a)))) s = Math.max(s, 78);
-  if (h.length >= 8 && (a.includes(prefix(h)) || h.includes(prefix(a)))) s = Math.max(s, 78);
+  if (v.length >= 8 && (a.includes(prefix(v)) || v.includes(prefix(a))))
+    s = Math.max(s, 78);
+  if (h.length >= 8 && (a.includes(prefix(h)) || h.includes(prefix(a))))
+    s = Math.max(s, 78);
   return s;
 }
 
@@ -123,7 +150,7 @@ function assignSequencePositions(listItems, orderedAnswers) {
   const items = [...listItems].map((el, index) => ({
     el,
     index,
-    texts: getSequenceItemTexts(el)
+    texts: getSequenceItemTexts(el),
   }));
   const used = new Set();
   const positionByEl = new Map();
@@ -133,7 +160,10 @@ function assignSequencePositions(listItems, orderedAnswers) {
     let bestScore = 0;
     items.forEach((it, j) => {
       if (used.has(j)) return;
-      const sc = scoreStepAgainstAnswer(it.texts, typeof ansLine === 'string' ? ansLine : String(ansLine));
+      const sc = scoreStepAgainstAnswer(
+        it.texts,
+        typeof ansLine === "string" ? ansLine : String(ansLine),
+      );
       if (sc > bestScore) {
         bestScore = sc;
         bestJ = j;
@@ -148,44 +178,68 @@ function assignSequencePositions(listItems, orderedAnswers) {
   return positionByEl;
 }
 
+// ====== Highlight câu sắp xếp ======
 function highlightSequenceAnswers(orderedAnswers) {
-  const sequenceList = document.querySelector('.sequence__list');
+  const sequenceList = document.querySelector(".sequence__list");
   if (!sequenceList) return false;
 
-  const listItems = sequenceList.querySelectorAll(':scope > li.sequence__listitem, :scope > .sequence__listitem');
+  const listItems = sequenceList.querySelectorAll(
+    ":scope > li.sequence__listitem, :scope > .sequence__listitem",
+  );
   if (!listItems.length) return false;
+
+  // Inject CSS một lần duy nhất
+  if (!document.getElementById("qaf-seq-style")) {
+    const style = document.createElement("style");
+    style.id = "qaf-seq-style";
+    style.textContent = `
+      .sequence__listitem .qaf-seq-order {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        font-weight: bold;
+      }
+      .sequence__listitem:hover .qaf-seq-order {
+        opacity: 0.6 !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 
   const positionByEl = assignSequencePositions(listItems, orderedAnswers);
   let count = 0;
 
-  listItems.forEach(li => {
+  listItems.forEach((li) => {
     const pos = positionByEl.get(li);
     if (!pos) return;
-    li.setAttribute('data-qaf-highlighted', 'true');
-    if (!li.querySelector('.qaf-seq-order')) {
-      const span = document.createElement('span');
-      span.className = 'qaf-seq-order';
+    li.setAttribute("data-qaf-highlighted", "true");
+    if (!li.querySelector(".qaf-seq-order")) {
+      const span = document.createElement("span");
+      span.className = "qaf-seq-order";
       span.textContent = ` ${pos}`;
-      // span.style.cssText = 'font-weight:700; font-size:14px; margin-left:6px;';
+      // Không cần inline style nữa vì CSS đã xử lý
       li.appendChild(span);
     }
     count++;
   });
 
-  console.log(`[Q&A Finder] Sequence: đã gán thứ tự cho ${count}/${listItems.length} bước`);
+  console.log(
+    `[Q&A Finder] Sequence: đã gán thứ tự cho ${count}/${listItems.length} bước`,
+  );
   return count > 0;
 }
 
 // ====== Hàm highlight chính ======
 async function autoHighlightAnswers() {
   // Kiểm tra trạng thái bật/tắt
-  const { autoHighlightEnabled = false } = await chrome.storage.local.get(['autoHighlightEnabled']);
+  const { autoHighlightEnabled = false } = await chrome.storage.local.get([
+    "autoHighlightEnabled",
+  ]);
   if (!autoHighlightEnabled) return;
 
   // Tìm phần tử câu hỏi
   const questionEl =
     document.querySelector('[id^="question_body_"]') ||
-    document.querySelector('.question__question p');
+    document.querySelector(".question__question p");
 
   if (!questionEl) return;
 
@@ -196,23 +250,29 @@ async function autoHighlightAnswers() {
   await ensureSamplesInitialized();
 
   // Đọc samples từ storage
-  const { samples = [] } = await chrome.storage.local.get(['samples']);
+  const { samples = [] } = await chrome.storage.local.get(["samples"]);
   if (samples.length === 0) {
-    console.warn('[Q&A Finder] Không có câu hỏi nào trong kho. Hãy mở popup extension trước.');
+    console.warn(
+      "[Q&A Finder] Không có câu hỏi nào trong kho. Hãy mở popup extension trước.",
+    );
     return;
   }
 
   // Xếp hạng theo độ tương đồng
   const ranked = samples
-    .map(s => ({ ...s, sim: calculateSimilarity(questionText, s.question) }))
+    .map((s) => ({ ...s, sim: calculateSimilarity(questionText, s.question) }))
     .sort((a, b) => b.sim - a.sim);
 
   const best = ranked[0];
-  console.log(`[Q&A Finder] Câu hỏi khớp nhất: ${best.sim.toFixed(1)}% - "${best.question.substring(0, 70)}..."`);
+  console.log(
+    `[Q&A Finder] Câu hỏi khớp nhất: ${best.sim.toFixed(1)}% - "${best.question.substring(0, 70)}..."`,
+  );
 
   // Ngưỡng 50%: dưới mức này coi như câu hỏi không có trong kho
   if (best.sim < 50) {
-    console.log('[Q&A Finder] Không tìm thấy câu hỏi khớp (< 50%), bỏ qua để tránh sai');
+    console.log(
+      "[Q&A Finder] Không tìm thấy câu hỏi khớp (< 50%), bỏ qua để tránh sai",
+    );
     return;
   }
 
@@ -221,56 +281,119 @@ async function autoHighlightAnswers() {
 
   // Câu sắp xếp: answer là mảng thứ tự đúng; chỉ khi trang có .sequence__list (tránh nhầm checkbox đa chọn)
   if (
-    document.querySelector('.sequence__list') &&
+    document.querySelector(".sequence__list") &&
     Array.isArray(best.answer) &&
     best.answer.length >= 2
   ) {
     if (highlightSequenceAnswers(best.answer)) {
-      console.log(`[Q&A Finder] Đã hiển thị thứ tự đúng (sequence), khớp câu hỏi ${best.sim.toFixed(0)}%`);
+      console.log(
+        `[Q&A Finder] Đã hiển thị thứ tự đúng (sequence), khớp câu hỏi ${best.sim.toFixed(0)}%`,
+      );
     }
     return;
   }
 
-  const choiceItems = document.querySelectorAll('.question__choicesitem');
+  const choiceItems = document.querySelectorAll(".question__choicesitem");
   let count = 0;
 
   // Phân biệt radio (1 đáp án) và checkbox (nhiều đáp án)
-  const isRadio = !!document.querySelector('.question__choices input[type="radio"]');
+  const isRadio = !!document.querySelector(
+    '.question__choices input[type="radio"]',
+  );
+
+  // // Helper: áp dụng highlight lên 1 item
+  // function applyHighlight(item, labelEl, score) {
+  //   item.setAttribute('data-qaf-highlighted', 'true');
+  //   // labelEl.style.color = '#d32f2f';
+  //   if (!item.querySelector('.qaf-check')) {
+  //     const tick = document.createElement('span');
+  //     tick.className = `qaf-check qaf-score-${score}`;
+  //     labelEl.appendChild(tick);
+  //   }
+  //   // Làm mờ ô checkbox/radio UI của đáp án đúng
+  //   const ui = item.querySelector('span.checkbox__ui, span.radio__ui');
+  //   if (ui) ui.style.cssText = 'opacity: 0.3 !important';
+  // }
 
   // Helper: áp dụng highlight lên 1 item
   function applyHighlight(item, labelEl, score) {
-    item.setAttribute('data-qaf-highlighted', 'true');
-    // labelEl.style.color = '#d32f2f';
-    if (!item.querySelector('.qaf-check')) {
-      const tick = document.createElement('span');
+    item.setAttribute("data-qaf-highlighted", "true");
+
+    // Inject CSS một lần duy nhất
+    if (!document.getElementById("qaf-ui-style")) {
+      const style = document.createElement("style");
+      style.id = "qaf-ui-style";
+      style.textContent = `
+        [data-qaf-highlighted] span.checkbox__ui,
+        [data-qaf-highlighted] span.radio__ui {
+          position: relative;
+        }
+        [data-qaf-highlighted] span.checkbox__ui::before,
+        [data-qaf-highlighted] span.radio__ui::after {
+          content: '✓';
+          position: absolute;
+          bottom: calc(100% + 6px);
+          left: 50%;
+          transform: translateX(-50%);
+          background: #2e7d32;
+          color: #fff;
+          font-size: 8px;
+          line-height: 1;
+          padding: 6px 4px;
+          border-radius: 4px;
+          white-space: nowrap;
+          pointer-events: none;
+          opacity: 0;
+          display: none;
+          transition: opacity 0.2s ease;
+          z-index: 9999;
+        }
+        [data-qaf-highlighted] span.checkbox__ui:hover::before,
+        [data-qaf-highlighted] span.radio__ui:hover::after {
+          opacity: 1;
+          display: block;
+        }
+    `;
+      document.head.appendChild(style);
+    }
+
+    if (!item.querySelector(".qaf-check")) {
+      const tick = document.createElement("span");
       tick.className = `qaf-check qaf-score-${score}`;
-      // tick.textContent = ` ✓ (${score.toFixed(0)}%)`;
-      // tick.style.cssText = 'color:#d32f2f; font-weight:700; font-size:14px; margin-left:6px;';
       labelEl.appendChild(tick);
     }
-    // Làm mờ ô checkbox/radio UI của đáp án đúng
-    const ui = item.querySelector('span.checkbox__ui, span.radio__ui');
-    if (ui) ui.style.cssText = 'opacity: 0.3 !important';
+
+    // const ui = item.querySelector("span.checkbox__ui, span.radio__ui");
+    // if (ui) ui.style.cssText = "opacity: 0.3 !important";
   }
 
   // Helper: tính điểm khớp giữa text lựa chọn và đáp án
   function scoreChoice(choiceText) {
     if (Array.isArray(best.answer)) {
-      return Math.max(...best.answer.map(a => calculateSimilarity(choiceText, a)));
+      return Math.max(
+        ...best.answer.map((a) => calculateSimilarity(choiceText, a)),
+      );
     }
     const sim = calculateSimilarity(choiceText, best.answer);
-    const choiceNorm = choiceText.toLowerCase().replace(/[.,!?]$/g, '').trim();
+    const choiceNorm = choiceText
+      .toLowerCase()
+      .replace(/[.,!?]$/g, "")
+      .trim();
     const ansNorm = best.answer.toLowerCase();
     // Cộng điểm nếu answer chứa nguyên text lựa chọn
-    return (ansNorm.includes(choiceNorm) && choiceNorm.length > 10) ? Math.max(sim, 85) : sim;
+    return ansNorm.includes(choiceNorm) && choiceNorm.length > 10
+      ? Math.max(sim, 85)
+      : sim;
   }
 
   if (isRadio) {
     // Radio: chỉ highlight lựa chọn có điểm cao NHẤT
-    let bestItem = null, bestLabelEl = null, bestScore = 0;
+    let bestItem = null,
+      bestLabelEl = null,
+      bestScore = 0;
 
-    choiceItems.forEach(item => {
-      const labelEl = item.querySelector('.checkbox__label, .radio__label');
+    choiceItems.forEach((item) => {
+      const labelEl = item.querySelector(".checkbox__label, .radio__label");
       if (!labelEl) return;
       const score = scoreChoice(labelEl.textContent.trim());
       if (score > bestScore) {
@@ -286,8 +409,8 @@ async function autoHighlightAnswers() {
     }
   } else {
     // Checkbox: highlight tất cả lựa chọn đúng
-    choiceItems.forEach(item => {
-      const labelEl = item.querySelector('.checkbox__label, .radio__label');
+    choiceItems.forEach((item) => {
+      const labelEl = item.querySelector(".checkbox__label, .radio__label");
       if (!labelEl) return;
       if (choiceMatchesAnswer(labelEl.textContent.trim(), best.answer)) {
         applyHighlight(item, labelEl, scoreChoice(labelEl.textContent.trim()));
@@ -296,36 +419,38 @@ async function autoHighlightAnswers() {
     });
   }
 
-  console.log(`[Q&A Finder] Đã highlight ${count} đáp án đúng (${isRadio ? 'radio' : 'checkbox'}), khớp ${best.sim.toFixed(0)}%`);
+  console.log(
+    `[Q&A Finder] Đã highlight ${count} đáp án đúng (${isRadio ? "radio" : "checkbox"}), khớp ${best.sim.toFixed(0)}%`,
+  );
 }
 
 // ====== Lắng nghe lệnh bật/tắt từ popup ======
 chrome.runtime.onMessage.addListener((message) => {
-  if (message.action === 'highlightOn') {
+  if (message.action === "highlightOn") {
     autoHighlightAnswers();
-  } else if (message.action === 'highlightOff') {
+  } else if (message.action === "highlightOff") {
     clearHighlights();
   }
 });
 
 // ====== Chạy khi trang sẵn sàng ======
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', autoHighlightAnswers);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", autoHighlightAnswers);
 } else {
   autoHighlightAnswers();
 }
 
 // ====== Theo dõi thay đổi DOM khi chuyển câu (SPA) ======
 let debounceTimer = null;
-new MutationObserver(mutations => {
+new MutationObserver((mutations) => {
   for (const { addedNodes } of mutations) {
     for (const node of addedNodes) {
       if (
         node.nodeType === 1 &&
-        (node.classList?.contains('question') ||
-          node.classList?.contains('sequence') ||
-          node.querySelector?.('.question__question') ||
-          node.querySelector?.('.sequence__list'))
+        (node.classList?.contains("question") ||
+          node.classList?.contains("sequence") ||
+          node.querySelector?.(".question__question") ||
+          node.querySelector?.(".sequence__list"))
       ) {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(autoHighlightAnswers, 400);

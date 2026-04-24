@@ -22,7 +22,7 @@ const DEFAULT_SAMPLES = [
   },
   {
     question:
-      "When AI chatbots generate false, nonsensical, or misleading outputs that seem believable, these errors are referred to as what?",
+      "When AI chatbots generate false, nonsensical or misleading outputs that seem believable, these errors are referred to as what?",
     answer: "Hallucinations",
   },
   {
@@ -881,5 +881,58 @@ const DEFAULT_SAMPLES = [
       "Upload a PDF of the policy into Gemini and use Guided Learning to learn more about it.",
       "Upload a PDF of the policy into Gemini and ask Gemini to create an audio overview."
     ]
+  },
+  {
+    question: "An educator wants to explore different teaching techniques for differentiation / adaptive teaching in their mixed-ability classroom as part of their professional development goals. Which of these Gemini prompts would be most appropriate for this task?",
+    answer: "I am an experienced middle-school teacher. Help me to create a list of strategies to help support me to meet the needs of all of my students in my mixed-ability classroom."
+  },
+  {
+    question: "Which of the following methods can be used to open Gemini for Education?",
+    answer: [
+      "Head to the Gemini Icon in the Apps Launcher",
+      "Head to gemini.google.com in the Omnibox"
+    ]
+  },
+  {
+    question: "An educator needs to quickly create a set of tailored quiz questions about the key events of the American Revolution for a formative assessment. How can they effectively use Gemini to help with this task?",
+    answer: "Enter a prompt in Gemini specifying the topic, grade level, and requesting quiz questions to check for understanding."
+  },
+  {
+    question: " A history teacher wants to implement a strategy to help students develop AI literacy by understanding the limitations of AI tools, specifically how AI output can contain factual inaccuracies or biases. Which of the following strategies would be most effective in teaching students to critically evaluate AI-generated content for accuracy and bias?",
+    answer: "Engaging students in an activity where they compare and contrast AI-generated summaries of historical events with verified textbook information, actively identifying discrepancies, biases, and unstated assumptions, followed by a class discussion on why these issues occur."
+  },
+  {
+    question: "An educator uses a generative AI tool to help create a first draft of a lesson plan. To effectively keep themselves 'in the loop', what is the most critical next step?",
+    answer: "Use their professional judgement to review, edit and adapt the AI's output to align with curriculum standards and their specific students' needs."
+  },
+  {
+    question: "An administrator at a school needs help drafting a job description for a new teaching position. Which approach using Gemini is most likely to streamline this administrative task?",
+    answer: "Enter a prompt in Gemini, acting as an Education HR specialist, requesting a job description for a teaching role including required skills and experience."
+  },
+  {
+    question: "Which of the following would be appropriate content for simple classroom guidelines on the responsible and ethical use of generative AI?",
+    answer: "A guideline requiring students to explicitly cite AI tools when used for brainstorming or drafting." 
+  },
+  {
+    question: "A teacher asks a generative AI to summarise a historical event. The response is well written, but includes a specific date for a battle that the teacher believes is incorrect. What is the best way to handle this situation?",
+    answer: "Treat the incorrect date as a likely hallucination and fact-check the information using reliable, primary sources before using it"
+  },
+  {
+    question: "To make it easier to share in Google Classroom, you can share a link with students in Classroom to direct them to Gemini's Guided Learning mode.",
+    answer: "True"
+  },
+  {
+    question:
+      "Students are using Gemini for research on a current event for a class project. To foster critical thinking skills regarding the AI-generated information, which teacher action would be most effective?",
+    answer:
+      "Assign students to cross-reference at least three key facts provided by Gemini with independent, reputable sources, and discuss discrepancies.",
+  },
+  {
+    question: "An educator is using Google Workspace with the Google AI Pro for Education add-on and wants to create a new video for their students based on the slides from their lesson. Which of the following methods could be used?",
+    answer: "Open a new Google Vid and select 'Import slides'"
+  },
+  {
+    question: "Gemini on a Google Workspace for Education account doesn't use your data to train the model.",
+    answer: "True"
   }
 ];

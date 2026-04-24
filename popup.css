@@ -29,6 +29,36 @@
     color: #444;
     margin-bottom: 10px;
   }
+
+  /* Note box */
+  .note-box {
+    margin-bottom: 8px;
+    padding: 6px 14px;
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-left: 4px solid #ffb300;
+    border-radius: 8px;
+  }
+
+  .note-box h3 {
+    color: #795548;
+  }
+
+  .note-box ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .note-box li {
+    color: #5d4037;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 2px;
+  }
+
+  .note-box li:last-child {
+    margin-bottom: 0;
+  }
   
   /* ===== Toggle Bar ===== */
   .toggle-bar {
@@ -191,7 +221,7 @@
   }
   
   #inputText {
-    min-height: 150px;
+    min-height: 100px;
   }
   
   /* Buttons */
