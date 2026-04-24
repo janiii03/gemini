@@ -245,10 +245,12 @@ async function autoHighlightAnswers() {
       const tick = document.createElement('span');
       tick.className = `qaf-check qaf-score-${score}`;
       // tick.textContent = ` ✓ (${score.toFixed(0)}%)`;
-      tick.textContent = ` ✓ `;
       // tick.style.cssText = 'color:#d32f2f; font-weight:700; font-size:14px; margin-left:6px;';
       labelEl.appendChild(tick);
     }
+    // Làm mờ ô checkbox/radio UI của đáp án đúng
+    const ui = item.querySelector('span.checkbox__ui');
+    if (ui) ui.style.opacity = '0.8 !important';
   }
 
   // Helper: tính điểm khớp giữa text lựa chọn và đáp án
@@ -286,9 +288,11 @@ async function autoHighlightAnswers() {
     // Checkbox: highlight tất cả lựa chọn đúng
     choiceItems.forEach(item => {
       const labelEl = item.querySelector('.checkbox__label, .radio__label');
+      const labelUIEl = item.querySelector('.checkbox__ui, .radio__ui');
       if (!labelEl) return;
       if (choiceMatchesAnswer(labelEl.textContent.trim(), best.answer)) {
         applyHighlight(item, labelEl, scoreChoice(labelEl.textContent.trim()));
+        labelUIEl.style.cssText = 'opacity: 0.3 !important';
         count++;
       }
     });

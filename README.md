@@ -1,2 +1,3 @@
+- Đây là công cụ hỗ trợ học tập, không nhằm mục đích gian lận. Tác giả không chịu trách nhiệm cho bất kỳ hành vi sử dụng sai mục đích nào.
 - Dùng để tìm kiếm đáp án nhanh được cài đặt sẳn, các câu hỏi hiện tại là đáp án của đề thi "Gemini Certification for University Students"
 - Có thể cài đặt câu hỏi ở file **default-samples.js**
