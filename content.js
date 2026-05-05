@@ -328,19 +328,33 @@ async function autoHighlightAnswers() {
         [data-qaf-highlighted] span.radio__ui {
           position: relative;
         }
-        [data-qaf-highlighted] span.checkbox__ui::before,
-        [data-qaf-highlighted] span.radio__ui::after {
-          content: '✓';
+        [data-qaf-highlighted] span.checkbox__ui::before {
+          content: '';
           position: absolute;
-          bottom: calc(100% + 6px);
+          height: 13px;
+          width: 6.5px;
+          border: solid #fff;
+          border-width: 0 2px 2px 0;
+          transform: translateX(4.5px) translateY(-0.5px) rotate(45deg);
+          white-space: nowrap;
+          pointer-events: none;
+          opacity: 0;
+          display: none;
+          transition: opacity 0.2s ease;
+          z-index: 9999;
+        }
+        [data-qaf-highlighted] span.radio__ui::after {
+          content: '';
+          position: absolute;
+          top: 50%;
           left: 50%;
-          transform: translateX(-50%);
-          background: #2e7d32;
+          transform: translate(-50%, -50%);
           color: #fff;
-          font-size: 8px;
           line-height: 1;
-          padding: 6px 4px;
-          border-radius: 4px;
+          width: 10px;
+          height: 10px;
+          background: #3168f6;
+          border-radius: 50%;
           white-space: nowrap;
           pointer-events: none;
           opacity: 0;
@@ -352,6 +366,9 @@ async function autoHighlightAnswers() {
         [data-qaf-highlighted] span.radio__ui:hover::after {
           opacity: 1;
           display: block;
+        }
+        [data-qaf-highlighted] span.checkbox__ui:hover{
+          background: #3168f6;
         }
     `;
       document.head.appendChild(style);
