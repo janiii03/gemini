@@ -83,6 +83,7 @@ const DEFAULT_SAMPLES = [
       "Guided Learning - Learn and Understand Topics",
       "Canvas - Create Docs and Apps",
       "Create image - Generate images",
+      "Create Music - Create new musical songs",
     ],
   },
   {
@@ -785,7 +786,7 @@ const DEFAULT_SAMPLES = [
   {
     question:
       "Within NotebookLM, you have the option to 'search the web' to discover and add new sources to your notebook, rather than solely relying on your pre-uploaded documents.",
-    answer: "False",
+    answer: "True",
   },
   {
     question:

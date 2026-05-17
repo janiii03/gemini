@@ -380,3 +380,10 @@ async function checkPendingQuestion() {
   await loadToggleState();
   await checkPendingQuestion();
 })();
+
+// Lắng nghe thay đổi từ storage (khi nhấn phím tắt)
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if (namespace === 'local' && changes.autoHighlightEnabled) {
+    applyToggleUI(changes.autoHighlightEnabled.newValue);
+  }
+});

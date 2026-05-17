@@ -39,6 +39,41 @@ function calculateSimilarity(text1, text2) {
   return (dot / (mag1 * mag2)) * 100;
 }
 
+// ====== Indicator trạng thái extension ======
+function createStatusIndicator() {
+  const heading = document.querySelector('h1.u-headingpage--coursebar');
+  if (!heading) return;
+  
+  // Tránh tạo trùng
+  if (document.getElementById('qaf-status')) return;
+  
+  const span = document.createElement('span');
+  span.id = 'qaf-status';
+  span.style.cssText = `
+    margin-left: 2px;
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: middle;
+  `;
+  
+  heading.parentNode.insertBefore(span, heading.nextSibling);
+}
+
+async function updateStatusIndicator() {
+  const span = document.getElementById('qaf-status');
+  if (!span) return;
+  
+  const { autoHighlightEnabled = false } = await chrome.storage.local.get(['autoHighlightEnabled']);
+  
+  if (autoHighlightEnabled) {
+    span.textContent = '*';
+    span.title = 'Auto Highlight: BẬT';
+  } else {
+    span.textContent = '';
+    span.title = 'Auto Highlight: TẮT';
+  }
+}
+
 // ====== Kiểm tra một lựa chọn có khớp với đáp án không ======
 function choiceMatchesAnswer(choiceText, answer) {
   const choiceNorm = choiceText
@@ -445,15 +480,23 @@ async function autoHighlightAnswers() {
 chrome.runtime.onMessage.addListener((message) => {
   if (message.action === "highlightOn") {
     autoHighlightAnswers();
+    updateStatusIndicator();
   } else if (message.action === "highlightOff") {
     clearHighlights();
+    updateStatusIndicator();
   }
 });
 
 // ====== Chạy khi trang sẵn sàng ======
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", autoHighlightAnswers);
+  document.addEventListener("DOMContentLoaded", () => {
+    createStatusIndicator();
+    updateStatusIndicator();
+    autoHighlightAnswers();
+  });
 } else {
+  createStatusIndicator();
+  updateStatusIndicator();
   autoHighlightAnswers();
 }
 
@@ -476,3 +519,15 @@ new MutationObserver((mutations) => {
     }
   }
 }).observe(document.documentElement, { childList: true, subtree: true });
+
+// ====== Lắng nghe thay đổi storage (khi nhấn phím tắt) ======
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if (namespace === 'local' && changes.autoHighlightEnabled) {
+    updateStatusIndicator();
+    if (changes.autoHighlightEnabled.newValue) {
+      autoHighlightAnswers();
+    } else {
+      clearHighlights();
+    }
+  }
+});

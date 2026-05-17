@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Gemini Helper",
-    "version": "2.9",
+    "version": "3.0",
     "description": "Tìm đáp án phù hợp nhất cho câu hỏi của bạn từ ngân hàng câu hỏi đã lưu",
     "permissions": [
       "storage",
@@ -21,6 +21,15 @@
     ],
     "background": {
       "service_worker": "background.js"
+    },
+    "commands": {
+      "toggle_highlight": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+X",
+          "mac": "Command+Shift+X"
+        },
+        "description": "Bật/tắt Tự Động Highlight Đáp Án"
+      }
     },
     "action": {
       "default_popup": "popup.html",

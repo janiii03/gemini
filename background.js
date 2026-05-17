@@ -35,3 +35,29 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 chrome.runtime.onStartup.addListener(() => {
   console.log('🚀 Q&A Finder Extension started');
 });
+
+// ====== Xử lý phím tắt Ctrl+Shift+X ======
+chrome.commands.onCommand.addListener(async (command) => {
+  if (command === 'toggle_highlight') {
+    // Lấy trạng thái hiện tại
+    const { autoHighlightEnabled = false } = await chrome.storage.local.get(['autoHighlightEnabled']);
+    const newState = !autoHighlightEnabled;
+    
+    // Lưu trạng thái mới
+    await chrome.storage.local.set({ autoHighlightEnabled: newState });
+    
+    // Gửi message đến content script ở tab hiện tại
+    try {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      if (tab?.id) {
+        await chrome.tabs.sendMessage(tab.id, {
+          action: newState ? 'highlightOn' : 'highlightOff'
+        });
+      }
+    } catch (_) {
+      // Không có content script ở tab này — bỏ qua
+    }
+    
+    console.log(`🔘 Auto-highlight ${newState ? 'BẬT' : 'TẮT'}`);
+  }
+});
